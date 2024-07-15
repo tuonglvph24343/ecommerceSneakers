@@ -13,7 +13,10 @@ class BrandController extends Controller
     use ImageUploadTrait;
     public function index(BrandDataTable $dataTable)
     {
+        
         return $dataTable->render('admin.brand.index');
+        //teest
+
     }
     public function create()
     {

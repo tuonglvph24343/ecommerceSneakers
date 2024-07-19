@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>Sazao || e-Commerce HTML Template</title>
     <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon.png') }}">
@@ -33,7 +34,7 @@
     <!--============================
         HEADER START
     ==============================-->
-        @include('frontend.layouts.header')
+    @include('frontend.layouts.header')
     <!--============================
         HEADER END
     ==============================-->
@@ -42,7 +43,7 @@
     <!--============================
         MAIN MENU START
     ==============================-->
-        @include('frontend.layouts.menu')
+    @include('frontend.layouts.menu')
     <!--============================
         MAIN MENU END
     ==============================-->
@@ -151,11 +152,11 @@
     <script>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
-                toastr.error("{{$error}}")
+                toastr.error("{{ $error }}")
             @endforeach
         @endif
-      </script>
- @stack('scripts')
+    </script>
+    @stack('scripts')
 </body>
 
 </html>

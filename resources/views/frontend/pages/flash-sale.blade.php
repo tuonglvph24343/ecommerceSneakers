@@ -1,8 +1,8 @@
 @extends('frontend.layouts.master')
 
-{{-- @section('title')
+@section('title')
 {{$settings->site_name}} || Flash Sale
-@endsection --}}
+@endsection
 
 @section('content')
     <!--============================

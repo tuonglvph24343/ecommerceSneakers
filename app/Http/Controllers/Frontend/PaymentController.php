@@ -30,10 +30,10 @@ class PaymentController extends Controller
         return view('frontend.pages.payment');
     }
 
-    // public function paymentSuccess()
-    // {
-    //     return view('frontend.pages.payment-success');
-    // }
+    public function paymentSuccess()
+    {
+        return view('frontend.pages.payment-success');
+    }
 
     // public function storeOrder($paymentMethod, $paymentStatus, $transactionId, $paidAmount, $paidCurrencyName)
     // {
@@ -96,105 +96,105 @@ class PaymentController extends Controller
     // }
 
 
-    // public function paypalConfig()
-    // {
-    //     $paypalSetting = PaypalSetting::first();
-    //     $config = [
-    //         'mode'    => $paypalSetting->mode === 1 ? 'live' : 'sandbox',
-    //         'sandbox' => [
-    //             'client_id'         => $paypalSetting->client_id,
-    //             'client_secret'     => $paypalSetting->secret_key,
-    //             'app_id'            => 'APP-80W284485P519543T',
-    //         ],
-    //         'live' => [
-    //             'client_id'         => $paypalSetting->client_id,
-    //             'client_secret'     => $paypalSetting->secret_key,
-    //             'app_id'            => '',
-    //         ],
+    public function paypalConfig()
+    {
+        $paypalSetting = PaypalSetting::first();
+        $config = [
+            'mode'    => $paypalSetting->mode === 1 ? 'live' : 'sandbox',
+            'sandbox' => [
+                'client_id'         => $paypalSetting->client_id,
+                'client_secret'     => $paypalSetting->secret_key,
+                'app_id'            => 'APP-80W284485P519543T',
+            ],
+            'live' => [
+                'client_id'         => $paypalSetting->client_id,
+                'client_secret'     => $paypalSetting->secret_key,
+                'app_id'            => '',
+            ],
 
-    //         'payment_action' => 'Sale',
-    //         'currency'       => $paypalSetting->currency_name,
-    //         'notify_url'     => '',
-    //         'locale'         => 'en_US',
-    //         'validate_ssl'   =>  true,
-    //     ];
-    //     return $config;
-    // }
+            'payment_action' => 'Sale',
+            'currency'       => $paypalSetting->currency_name,
+            'notify_url'     => '',
+            'locale'         => 'en_US',
+            'validate_ssl'   =>  true,
+        ];
+        return $config;
+    }
 
-    // /** Paypal redirect */
-    // public function payWithPaypal()
-    // {
-    //     $config = $this->paypalConfig();
-    //     $paypalSetting = PaypalSetting::first();
+    /** Paypal redirect */
+    public function payWithPaypal()
+    {
+        $config = $this->paypalConfig();
+        $paypalSetting = PaypalSetting::first();
 
-    //     $provider = new PayPalClient($config);
-    //     $provider->getAccessToken();
-
-
-    //     // calculate payable amount depending on currency rate
-    //     $total = getFinalPayableAmount();
-    //     $payableAmount = round($total*$paypalSetting->currency_rate, 2);
+        $provider = new PayPalClient($config);
+        $provider->getAccessToken();
 
 
-    //     $response = $provider->createOrder([
-    //         "intent" => "CAPTURE",
-    //         "application_context" => [
-    //             "return_url" => route('user.paypal.success'),
-    //             "cancel_url" => route('user.paypal.cancel'),
-    //         ],
-    //         "purchase_units" => [
-    //             [
-    //                 "amount" => [
-    //                     "currency_code" => $config['currency'],
-    //                     "value" => $payableAmount
-    //                 ]
-    //             ]
-    //         ]
-    //     ]);
+        // calculate payable amount depending on currency rate
+        $total = getFinalPayableAmount();
+        $payableAmount = round($total*$paypalSetting->currency_rate, 2); 
 
-    //     if(isset($response['id']) && $response['id'] != null){
-    //         foreach($response['links'] as $link){
-    //             if($link['rel'] === 'approve'){
-    //                 return redirect()->away($link['href']);
-    //             }
-    //         }
-    //     } else {
-    //         return redirect()->route('user.paypal.cancel');
-    //     }
 
-    // }
+        $response = $provider->createOrder([
+            "intent" => "CAPTURE",
+            "application_context" => [
+                "return_url" => route('user.paypal.success'),
+                "cancel_url" => route('user.paypal.cancel'),
+            ],
+            "purchase_units" => [
+                [
+                    "amount" => [
+                        "currency_code" => $config['currency'],
+                        "value" => $payableAmount
+                    ]
+                ]
+            ]
+        ]);
 
-    // public function paypalSuccess(Request $request)
-    // {
-    //     $config = $this->paypalConfig();
-    //     $provider = new PayPalClient($config);
-    //     $provider->getAccessToken();
+        if(isset($response['id']) && $response['id'] != null){
+            foreach($response['links'] as $link){
+                if($link['rel'] === 'approve'){
+                    return redirect()->away($link['href']);
+                }
+            }
+        } else {
+            return redirect()->route('user.paypal.cancel');
+        }
 
-    //     $response = $provider->capturePaymentOrder($request->token);
+    }
 
-    //     if (isset($response['status']) && $response['status'] == 'COMPLETED') {
+    public function paypalSuccess(Request $request)
+    {
+        $config = $this->paypalConfig();
+        $provider = new PayPalClient($config);
+        $provider->getAccessToken();
 
-    //         // calculate payable amount depending on currency rate
-    //         $paypalSetting = PaypalSetting::first();
-    //         $total = getFinalPayableAmount();
-    //         $paidAmount = round($total*$paypalSetting->currency_rate, 2);
+        $response = $provider->capturePaymentOrder($request->token);
 
-    //         $this->storeOrder('paypal', 1, $response['id'], $paidAmount, $paypalSetting->currency_name);
+        if (isset($response['status']) && $response['status'] == 'COMPLETED') {
 
-    //         // clear session
-    //         $this->clearSession();
+            // calculate payable amount depending on currency rate
+            // $paypalSetting = PaypalSetting::first();
+            // $total = getFinalPayableAmount();
+            // $paidAmount = round($total*$paypalSetting->currency_rate, 2);
 
-    //         return redirect()->route('user.payment.success');
-    //     }
+            // $this->storeOrder('paypal', 1, $response['id'], $paidAmount, $paypalSetting->currency_name);
 
-    //     return redirect()->route('user.paypal.cancel');
-    // }
+            // clear session
+            // $this->clearSession();
 
-    // public function paypalCancel()
-    // {
-    //     toastr('Someting went wrong try agin later!', 'error', 'Error');
-    //     return redirect()->route('user.payment');
-    // }
+            return redirect()->route('user.payment.success');
+        }
+
+        return redirect()->route('user.paypal.cancel');
+    }
+
+    public function paypalCancel()
+    {
+        toastr('Someting went wrong try agin later!', 'error', 'Error');
+        return redirect()->route('user.payment');
+    }
 
 
     // /** Stripe Payment */

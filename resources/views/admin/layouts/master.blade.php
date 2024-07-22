@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css">
     <link rel="stylesheet" href="{{asset('backend/assets/css/bootstrap-iconpicker.min.css')}}">
     <link rel="stylesheet" href="{{asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/modules/select2/dist/css/select2.min.css')}}">
+
 
 
     <!-- Template CSS -->
@@ -92,6 +94,8 @@
     {{-- <script src="{{asset('backend/assets/js/bootstrap-iconpicker.min.js')}}"></script> --}}
     <script src="{{asset('backend/assets/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
     <script src="{{asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+    <script src="{{asset('backend/assets/modules/select2/dist/js/select2.full.min.js')}}"></script>
+
 
 
     <!-- Page Specific JS File -->
@@ -109,6 +113,7 @@
         @endif
       </script>
 
+  <!-- Dynamic Delete alart -->
 <script>
     $(document).ready(function(){
 

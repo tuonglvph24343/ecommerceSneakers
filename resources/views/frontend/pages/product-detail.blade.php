@@ -82,7 +82,7 @@
                             @else
                                 <h4>{{ $settings->currency_icon }}{{ $product->price }}</h4>
                             @endif
-                            <p class="wsus__pro_rating">
+                            {{-- <p class="wsus__pro_rating">
                                 @php
                                     $avgRating = $product->reviews()->avg('rating');
                                     $fullRating = round($avgRating);
@@ -97,7 +97,7 @@
                                 @endfor
 
                                 <span>({{ count($product->reviews) }} review)</span>
-                            </p>
+                            </p> --}}
                             <p class="description">{!! $product->short_description !!}</p>
 
                             <form class="shopping-cart-form">
@@ -218,20 +218,20 @@
                                                 <div class="wsus__pro_det_vendor_text">
                                                     <h4>{{ $product->vendor->user->name }}</h4>
                                                     <p class="rating">
-                                                        @php
+                                                        {{-- @php
                                                             $avgRating = $product->reviews()->avg('rating');
                                                             $fullRating = round($avgRating);
-                                                        @endphp
+                                                        @endphp --}}
 
-                                                        @for ($i = 1; $i <= 5; $i++)
+                                                        {{-- @for ($i = 1; $i <= 5; $i++)
                                                             @if ($i <= $fullRating)
                                                                 <i class="fas fa-star"></i>
                                                             @else
                                                                 <i class="far fa-star"></i>
                                                             @endif
-                                                        @endfor
+                                                        @endfor --}}
 
-                                                        <span>({{ count($product->reviews) }} review)</span>
+                                                        {{-- <span>({{ count($product->reviews) }} review)</span> --}}
                                                     </p>
                                                     <p><span>Store Name:</span> {{ $product->vendor->shop_name }}</p>
                                                     <p><span>Address:</span> {{ $product->vendor->address }}</p>
@@ -253,7 +253,7 @@
                                     <div class="wsus__pro_det_review">
                                         <div class="wsus__pro_det_review_single">
                                             <div class="row">
-                                                <div class="col-xl-8 col-lg-7">
+                                                {{-- <div class="col-xl-8 col-lg-7">
                                                     <div class="wsus__comment_area">
                                                         <h4>Reviews <span>{{ count($reviews) }}</span></h4>
                                                         @foreach ($reviews as $review)
@@ -290,8 +290,8 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
+                                                </div> --}}
+                                                {{-- <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
                                                     @auth
                                                         @php
                                                             $isBrought = false;
@@ -363,7 +363,7 @@
                                                         @endif
                                                     @endauth
 
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -417,7 +417,7 @@
 
                 $.ajax({
                     method: 'POST',
-                    url: '{{ route('user.send-message') }}',
+                  
                     data: formData,
                     beforeSend: function() {
                         let html =
@@ -430,9 +430,7 @@
                     },
                     success: function(response) {
                         $('.message-box').val('');
-                        $('.modal-body').append(
-                            `<div class="alert alert-success mt-2"><a href="{{ route('user.messages.index') }}" class="text-primary">Click here</a> for go to messenger.</div>`
-                        )
+                      
                         toastr.success(response.message);
                     },
                     error: function(xhr, status, error) {

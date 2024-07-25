@@ -84,4 +84,7 @@ Route::group(['middleware' =>['auth','verified'],'prefix' => 'user','as' => 'use
      Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
      Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
 
+     /** Vnpay routes */
+     Route::post('vnpay/payment', [PaymentController::class, 'payWithVnPay'])->name('vnpay.payment');
+
 });

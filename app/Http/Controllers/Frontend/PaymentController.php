@@ -24,7 +24,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        if (!Session::has('address')) {
+        if(!Session::has('address')){
             return redirect()->route('user.checkout');
         }
         return view('frontend.pages.payment');
@@ -35,88 +35,88 @@ class PaymentController extends Controller
         return view('frontend.pages.payment-success');
     }
 
-    // public function storeOrder($paymentMethod, $paymentStatus, $transactionId, $paidAmount, $paidCurrencyName)
-    // {
-    //     $setting = GeneralSetting::first();
+    public function storeOrder($paymentMethod, $paymentStatus, $transactionId, $paidAmount, $paidCurrencyName)
+    {
+        $setting = GeneralSetting::first();
 
-    //     $order = new Order();
-    //     $order->invocie_id = rand(1, 999999);
-    //     $order->user_id = Auth::user()->id;
-    //     $order->sub_total = getCartTotal();
-    //     $order->amount =  getFinalPayableAmount();
-    //     $order->currency_name = $setting->currency_name;
-    //     $order->currency_icon = $setting->currency_icon;
-    //     $order->product_qty = \Cart::content()->count();
-    //     $order->payment_method = $paymentMethod;
-    //     $order->payment_status = $paymentStatus;
-    //     $order->order_address = json_encode(Session::get('address'));
-    //     $order->shpping_method = json_encode(Session::get('shipping_method'));
-    //     $order->coupon = json_encode(Session::get('coupon'));
-    //     $order->order_status = 'pending';
-    //     $order->save();
+        $order = new Order();
+        $order->invocie_id = rand(1, 999999);
+        $order->user_id = Auth::user()->id;
+        $order->sub_total = getCartTotal();
+        $order->amount =  getFinalPayableAmount();
+        $order->currency_name = $setting->currency_name;
+        $order->currency_icon = $setting->currency_icon;
+        $order->product_qty = \Cart::content()->count();
+        $order->payment_method = $paymentMethod;
+        $order->payment_status = $paymentStatus;
+        $order->order_address = json_encode(Session::get('address'));
+        $order->shpping_method = json_encode(Session::get('shipping_method'));
+        $order->coupon = json_encode(Session::get('coupon'));
+        $order->order_status = 'pending';
+        $order->save();
 
-    //     // store order products
-    //     foreach(\Cart::content() as $item){
-    //         $product = Product::find($item->id);
-    //         $orderProduct = new OrderProduct();
-    //         $orderProduct->order_id = $order->id;
-    //         $orderProduct->product_id = $product->id;
-    //         $orderProduct->vendor_id = $product->vendor_id;
-    //         $orderProduct->product_name = $product->name;
-    //         $orderProduct->variants = json_encode($item->options->variants);
-    //         $orderProduct->variant_total = $item->options->variants_total;
-    //         $orderProduct->unit_price = $item->price;
-    //         $orderProduct->qty = $item->qty;
-    //         $orderProduct->save();
+        // store order products
+        foreach(\Cart::content() as $item){
+            $product = Product::find($item->id);
+            $orderProduct = new OrderProduct();
+            $orderProduct->order_id = $order->id;
+            $orderProduct->product_id = $product->id;
+            $orderProduct->vendor_id = $product->vendor_id;
+            $orderProduct->product_name = $product->name;
+            $orderProduct->variants = json_encode($item->options->variants);
+            $orderProduct->variant_total = $item->options->variants_total;
+            $orderProduct->unit_price = $item->price;
+            $orderProduct->qty = $item->qty;
+            $orderProduct->save();
 
-    //         // update product quantity
-    //         $updatedQty = ($product->qty - $item->qty);
-    //         $product->qty = $updatedQty;
-    //         $product->save();
-    //     }
+            // update product quantity
+            $updatedQty = ($product->qty - $item->qty);
+            $product->qty = $updatedQty;
+            $product->save();
+        }
 
-    //     // store transaction details
-    //     $transaction = new Transaction();
-    //     $transaction->order_id = $order->id;
-    //     $transaction->transaction_id = $transactionId;
-    //     $transaction->payment_method = $paymentMethod;
-    //     $transaction->amount = getFinalPayableAmount();
-    //     $transaction->amount_real_currency = $paidAmount;
-    //     $transaction->amount_real_currency_name = $paidCurrencyName;
-    //     $transaction->save();
+        // store transaction details
+        $transaction = new Transaction();
+        $transaction->order_id = $order->id;
+        $transaction->transaction_id = $transactionId;
+        $transaction->payment_method = $paymentMethod;
+        $transaction->amount = getFinalPayableAmount();
+        $transaction->amount_real_currency = $paidAmount;
+        $transaction->amount_real_currency_name = $paidCurrencyName;
+        $transaction->save();
 
-    // }
+    }
 
-    // public function clearSession()
-    // {
-    //     \Cart::destroy();
-    //     Session::forget('address');
-    //     Session::forget('shipping_method');
-    //     Session::forget('coupon');
-    // }
+    public function clearSession()
+    {
+        \Cart::destroy();
+        Session::forget('address');
+        Session::forget('shipping_method');
+        Session::forget('coupon');
+    }
 
 
     public function paypalConfig()
     {
         $paypalSetting = PaypalSetting::first();
         $config = [
-            'mode' => $paypalSetting->mode === 1 ? 'live' : 'sandbox',
+            'mode'    => $paypalSetting->mode === 1 ? 'live' : 'sandbox',
             'sandbox' => [
-                'client_id' => $paypalSetting->client_id,
-                'client_secret' => $paypalSetting->secret_key,
-                'app_id' => 'APP-80W284485P519543T',
+                'client_id'         => $paypalSetting->client_id,
+                'client_secret'     => $paypalSetting->secret_key,
+                'app_id'            => 'APP-80W284485P519543T',
             ],
             'live' => [
-                'client_id' => $paypalSetting->client_id,
-                'client_secret' => $paypalSetting->secret_key,
-                'app_id' => '',
+                'client_id'         => $paypalSetting->client_id,
+                'client_secret'     => $paypalSetting->secret_key,
+                'app_id'            => '',
             ],
 
             'payment_action' => 'Sale',
-            'currency' => $paypalSetting->currency_name,
-            'notify_url' => '',
-            'locale' => 'en_US',
-            'validate_ssl' => true,
+            'currency'       => $paypalSetting->currency_name,
+            'notify_url'     => '',
+            'locale'         => 'en_US',
+            'validate_ssl'   =>  true,
         ];
         return $config;
     }
@@ -133,7 +133,7 @@ class PaymentController extends Controller
 
         // calculate payable amount depending on currency rate
         $total = getFinalPayableAmount();
-        $payableAmount = round($total * $paypalSetting->currency_rate, 2);
+        $payableAmount = round($total*$paypalSetting->currency_rate, 2);
 
 
         $response = $provider->createOrder([
@@ -152,9 +152,9 @@ class PaymentController extends Controller
             ]
         ]);
 
-        if (isset($response['id']) && $response['id'] != null) {
-            foreach ($response['links'] as $link) {
-                if ($link['rel'] === 'approve') {
+        if(isset($response['id']) && $response['id'] != null){
+            foreach($response['links'] as $link){
+                if($link['rel'] === 'approve'){
                     return redirect()->away($link['href']);
                 }
             }
@@ -175,14 +175,14 @@ class PaymentController extends Controller
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
 
             // calculate payable amount depending on currency rate
-            // $paypalSetting = PaypalSetting::first();
-            // $total = getFinalPayableAmount();
-            // $paidAmount = round($total*$paypalSetting->currency_rate, 2);
+            $paypalSetting = PaypalSetting::first();
+            $total = getFinalPayableAmount();
+            $paidAmount = round($total*$paypalSetting->currency_rate, 2);
 
-            // $this->storeOrder('paypal', 1, $response['id'], $paidAmount, $paypalSetting->currency_name);
+            $this->storeOrder('paypal', 1, $response['id'], $paidAmount, $paypalSetting->currency_name);
 
             // clear session
-            // $this->clearSession();
+            $this->clearSession();
 
             return redirect()->route('user.payment.success');
         }
@@ -197,7 +197,7 @@ class PaymentController extends Controller
     }
 
 
-    // /** Stripe Payment */
+    /** Stripe Payment */
 
     // public function payWithStripe(Request $request)
     // {
@@ -228,7 +228,7 @@ class PaymentController extends Controller
 
     // }
 
-    // /** Razorpay payment */
+    /** Razorpay payment */
     // public function payWithRazorPay(Request $request)
     // {
     //    $razorPaySetting = RazorpaySetting::first();
@@ -260,7 +260,7 @@ class PaymentController extends Controller
     //    }
     // }
 
-    // /** pay with cod */
+    /** pay with cod */
     // public function payWithCod(Request $request)
     // {
     //     $codPaySetting = CodSetting::first();
@@ -279,82 +279,82 @@ class PaymentController extends Controller
     //     $this->clearSession();
 
     //     return redirect()->route('user.payment.success');
-
+            
 
     // }
 
-    public function payWithVnPay()
-    {
+    // public function payWithVnPay()
+    // {
      
         
-        $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "https://localhost/vnpay_php/vnpay_return.php";
-        $vnp_TmnCode = "URZW8BU1";//Mã website tại VNPAY 
-        $vnp_HashSecret = "P5DBWGT8KMMXJWZTBWCWKLHUAZLBEJEV"; //Chuỗi bí mật
+    //     $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+    //     $vnp_Returnurl = "https://localhost/vnpay_php/vnpay_return.php";
+    //     $vnp_TmnCode = "URZW8BU1";//Mã website tại VNPAY 
+    //     $vnp_HashSecret = "P5DBWGT8KMMXJWZTBWCWKLHUAZLBEJEV"; //Chuỗi bí mật
         
-        $vnp_TxnRef = "100000"; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này 
+    //     $vnp_TxnRef = "100000"; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này 
        
-        $vnp_OrderInfo = "Thanh toán hoá đơn";
-        $vnp_OrderType = "Sneaker";
-        $vnp_Amount = 10000 * 100;
-        $vnp_Locale = "VN";
-        $vnp_BankCode ="NCB";
-        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+    //     $vnp_OrderInfo = "Thanh toán hoá đơn";
+    //     $vnp_OrderType = "Sneaker";
+    //     $vnp_Amount = 10000 * 100;
+    //     $vnp_Locale = "VN";
+    //     $vnp_BankCode ="NCB";
+    //     $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
     
-        $inputData = array(
-            "vnp_Version" => "2.1.0",
-            "vnp_TmnCode" => $vnp_TmnCode,
-            "vnp_Amount" => $vnp_Amount,
-            "vnp_Command" => "pay",
-            "vnp_CreateDate" => date('YmdHis'),
-            "vnp_CurrCode" => "VND",
-            "vnp_IpAddr" => $vnp_IpAddr,
-            "vnp_Locale" => $vnp_Locale,
-            "vnp_OrderInfo" => $vnp_OrderInfo,
-            "vnp_OrderType" => $vnp_OrderType,
-            "vnp_ReturnUrl" => $vnp_Returnurl,
-            "vnp_TxnRef" => $vnp_TxnRef,
+    //     $inputData = array(
+    //         "vnp_Version" => "2.1.0",
+    //         "vnp_TmnCode" => $vnp_TmnCode,
+    //         "vnp_Amount" => $vnp_Amount,
+    //         "vnp_Command" => "pay",
+    //         "vnp_CreateDate" => date('YmdHis'),
+    //         "vnp_CurrCode" => "VND",
+    //         "vnp_IpAddr" => $vnp_IpAddr,
+    //         "vnp_Locale" => $vnp_Locale,
+    //         "vnp_OrderInfo" => $vnp_OrderInfo,
+    //         "vnp_OrderType" => $vnp_OrderType,
+    //         "vnp_ReturnUrl" => $vnp_Returnurl,
+    //         "vnp_TxnRef" => $vnp_TxnRef,
             
-        );
+    //     );
         
-        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
-            $inputData['vnp_BankCode'] = $vnp_BankCode;
-        }
-        if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
-            $inputData['vnp_Bill_State'] = $vnp_Bill_State;
-        }
+    //     if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+    //         $inputData['vnp_BankCode'] = $vnp_BankCode;
+    //     }
+    //     if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
+    //         $inputData['vnp_Bill_State'] = $vnp_Bill_State;
+    //     }
         
-        //var_dump($inputData);
-        ksort($inputData);
-        $query = "";
-        $i = 0;
-        $hashdata = "";
-        foreach ($inputData as $key => $value) {
-            if ($i == 1) {
-                $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
-            } else {
-                $hashdata .= urlencode($key) . "=" . urlencode($value);
-                $i = 1;
-            }
-            $query .= urlencode($key) . "=" . urlencode($value) . '&';
-        }
+    //     //var_dump($inputData);
+    //     ksort($inputData);
+    //     $query = "";
+    //     $i = 0;
+    //     $hashdata = "";
+    //     foreach ($inputData as $key => $value) {
+    //         if ($i == 1) {
+    //             $hashdata .= '&' . urlencode($key) . "=" . urlencode($value);
+    //         } else {
+    //             $hashdata .= urlencode($key) . "=" . urlencode($value);
+    //             $i = 1;
+    //         }
+    //         $query .= urlencode($key) . "=" . urlencode($value) . '&';
+    //     }
         
-        $vnp_Url = $vnp_Url . "?" . $query;
-        if (isset($vnp_HashSecret)) {
-            $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
-            $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
-        }
-        $returnData = array('code' => '00'
-            , 'message' => 'success'
-            , 'data' => $vnp_Url);
-            if (isset($_POST['redirect'])) {
-                header('Location: ' . $vnp_Url);
-                die();
-            } else {
-                echo json_encode($returnData);
-            }
-            // vui lòng tham khảo thêm tại code demo
+    //     $vnp_Url = $vnp_Url . "?" . $query;
+    //     if (isset($vnp_HashSecret)) {
+    //         $vnpSecureHash =   hash_hmac('sha512', $hashdata, $vnp_HashSecret);//  
+    //         $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+    //     }
+    //     $returnData = array('code' => '00'
+    //         , 'message' => 'success'
+    //         , 'data' => $vnp_Url);
+    //         if (isset($_POST['redirect'])) {
+    //             header('Location: ' . $vnp_Url);
+    //             die();
+    //         } else {
+    //             echo json_encode($returnData);
+    //         }
+    //         // vui lòng tham khảo thêm tại code demo
         
-    }
+    // }
 
 }

@@ -51,9 +51,9 @@
             @include('admin.layouts.navbar')
             <!-- navbar Content -->
 
-             <!-- sidebar Content -->
+            <!-- sidebar Content -->
             @include('admin.layouts.sidebar')
-             <!-- sidebar Content -->
+            <!-- sidebar Content -->
 
             <!-- Main Content -->
             <div class="main-content">
@@ -105,72 +105,72 @@
     <script src="{{asset('backend/assets/js/scripts.js')}}"></script>
     <script src="{{asset('backend/assets/js/custom.js')}}"></script>
 
-    <script>
+    <!-- <script>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 toastr.error("{{$error}}")
             @endforeach
         @endif
-      </script>
+      </script> -->
 
-  <!-- Dynamic Delete alart -->
-<script>
-    $(document).ready(function(){
+    <!-- Dynamic Delete alart -->
+    <script>
+        $(document).ready(function() {
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-
-        $('body').on('click', '.delete-item', function(event){
-            event.preventDefault();
-
-            let deleteUrl = $(this).attr('href');
-
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-                }).then((result) => {
-                if (result.isConfirmed) {
-
-                    $.ajax({
-                        type: 'DELETE',
-                        url: deleteUrl,
-
-                        success: function(data){
-
-                            if(data.status == 'success'){
-                                Swal.fire(
-                                    'Deleted!',
-                                    data.message,
-                                    'success'
-                                )
-                                window.location.reload();
-                            }else if (data.status == 'error'){
-                                Swal.fire(
-                                    'Cant Delete',
-                                    data.message,
-                                    'error'
-                                )
-                            }
-                        },
-                        error: function(xhr, status, error){
-                            console.log(error);
-                        }
-                    })
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-            })
-        })
+            });
 
-    })
-  </script>
+
+            $('body').on('click', '.delete-item', function(event) {
+                event.preventDefault();
+
+                let deleteUrl = $(this).attr('href');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            type: 'DELETE',
+                            url: deleteUrl,
+
+                            success: function(data) {
+
+                                if (data.status == 'success') {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        data.message,
+                                        'success'
+                                    )
+                                    window.location.reload();
+                                } else if (data.status == 'error') {
+                                    Swal.fire(
+                                        'Cant Delete',
+                                        data.message,
+                                        'error'
+                                    )
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(error);
+                            }
+                        })
+                    }
+                })
+            })
+
+        })
+    </script>
 
     @stack('scripts')
 </body>

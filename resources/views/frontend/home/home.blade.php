@@ -36,7 +36,7 @@
     <!--============================
         BRAND SLIDER START
     ==============================-->
-    {{-- @include('frontend.home.sections.brand-slider') --}}
+    @include('frontend.home.sections.brand-slider')
     <!--============================
         BRAND SLIDER END
     ==============================-->
@@ -81,7 +81,7 @@
     <!--============================
         LARGE BANNER  START  
     ==============================-->
-    {{-- @include('frontend.home.sections.large-banner') --}}
+    @include('frontend.home.sections.large-banner')
     <!--============================
         LARGE BANNER  END  
     ==============================-->

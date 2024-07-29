@@ -17,7 +17,7 @@
     @endif
 
 
-    <li><a class="{{setActive(['user.orders.*'])}}" href=""><i class="fas fa-list-ul"></i> Orders</a></li>
+    <li><a class="{{setActive(['user.orders.*'])}}" href="{{route('user.orders.index')}}"><i class="fas fa-list-ul"></i> Orders</a></li>
     <li><a class="{{setActive(['user.review.*'])}}" href=""><i class="far fa-star"></i> Reviews</a></li>
 
     <li><a class="{{setActive(['user.profile'])}}" href="{{route('user.profile')}}"><i class="far fa-user"></i> My Profile</a></li>

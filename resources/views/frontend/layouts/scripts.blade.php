@@ -154,7 +154,7 @@
 
             $.ajax({
                 method: 'POST',
-                url: "",
+                url: "{{route('newsletter-request')}}",
                 data: data,
                 beforeSend: function() {
                     $('.subscribe_btn').text('Loading...');

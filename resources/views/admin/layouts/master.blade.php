@@ -60,13 +60,7 @@
                 @yield('content')
             </div>
             <footer class="main-footer">
-                <div class="footer-left">
-                    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad
-                        Nauval Azhar</a>
-                </div>
-                <div class="footer-right">
 
-                </div>
             </footer>
         </div>
     </div>
@@ -105,13 +99,6 @@
     <script src="{{asset('backend/assets/js/scripts.js')}}"></script>
     <script src="{{asset('backend/assets/js/custom.js')}}"></script>
 
-    <script>
-        @if($errors - > any())
-        @foreach($errors - > all() as $error)
-        toastr.error("{{$error}}")
-        @endforeach
-        @endif
-    </script>
 
     <!-- Dynamic Delete alart -->
     <script>
@@ -173,6 +160,8 @@
     </script>
 
     @stack('scripts')
+
+
 </body>
 
 </html>

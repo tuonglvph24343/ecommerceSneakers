@@ -45,7 +45,7 @@
     <!--============================
         SINGLE BANNER START
     ==============================-->
-    {{-- @include('frontend.home.sections.single-banner') --}}
+    @include('frontend.home.sections.single-banner')
     <!--============================
         SINGLE BANNER END  
     ==============================-->

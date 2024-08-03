@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
@@ -28,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
@@ -38,10 +39,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
-Route::get('admin/login',[AdminController::class,'login'])->name('admin.login');
+Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
 
 Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sale');
 
@@ -68,24 +69,27 @@ Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->
 Route::post('newsletter-request', [NewsletterController::class, 'newsLetterRequset'])->name('newsletter-request');
 Route::get('newsletter-verify/{token}', [NewsletterController::class, 'newsLetterEmailVarify'])->name('newsletter-verify');
 
-Route::group(['middleware' =>['auth','verified'],'prefix' => 'user','as' => 'user.'],function(){
+Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile');
     Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update'); // user.profile.update
     Route::post('profile', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 
-     /** User Address Route */
-     Route::resource('address', UserAddressController::class);
-     
-    /** Order Routes */
-     Route::get('orders', [UserOrderController::class, 'index'])->name('orders.index');
-     Route::get('orders/show/{id}', [UserOrderController::class, 'show'])->name('orders.show');
+    /** User Address Route */
+    Route::resource('address', UserAddressController::class);
 
-     /** Wishlist routes */
+    /** Order Routes */
+    Route::get('orders', [UserOrderController::class, 'index'])->name('orders.index');
+    Route::get('orders/show/{id}', [UserOrderController::class, 'show'])->name('orders.show');
+
+    /** Wishlist routes */
     Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
     Route::get('wishlist/add-product', [WishlistController::class, 'addToWishlist'])->name('wishlist.store');
     Route::get('wishlist/remove-product/{id}', [WishlistController::class, 'destory'])->name('wishlist.destory');
 
+    /** product review routes */
+    Route::post('review', [ReviewController::class, 'create'])->name('review.create');
+    Route::get('reviews', [ReviewController::class, 'index'])->name('review.index');
 
     /** Checkout routes */
     Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
@@ -96,12 +100,12 @@ Route::group(['middleware' =>['auth','verified'],'prefix' => 'user','as' => 'use
     Route::get('payment', [PaymentController::class, 'index'])->name('payment');
     Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 
-     /** Paypal routes */
-     Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
-     Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
-     Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
+    /** Paypal routes */
+    Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
+    Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
+    Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
 
-     /** Vnpay routes */
-     Route::post('vnpay/payment', [PaymentController::class, 'payWithVnPay'])->name('vnpay.payment');
+    /** Vnpay routes */
+    Route::post('vnpay/payment', [PaymentController::class, 'payWithVnPay'])->name('vnpay.payment');
 
 });

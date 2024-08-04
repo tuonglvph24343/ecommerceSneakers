@@ -14,10 +14,10 @@ class ReviewController extends Controller
 {
     use ImageUploadTrait;
 
-    // public function index(UserProductReviewsDataTable $dataTable)
-    // {
-    //     return $dataTable->render('frontend.dashboard.review.index');
-    // }
+    public function index(UserProductReviewsDataTable $dataTable)
+    {
+        return $dataTable->render('frontend.dashboard.review.index');
+    }
 
     public function create(Request $request)
     {

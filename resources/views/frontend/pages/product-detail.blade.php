@@ -253,7 +253,7 @@
                                     <div class="wsus__pro_det_review">
                                         <div class="wsus__pro_det_review_single">
                                             <div class="row">
-                                                {{-- <div class="col-xl-8 col-lg-7">
+                                                <div class="col-xl-8 col-lg-7">
                                                     <div class="wsus__comment_area">
                                                         <h4>Reviews <span>{{ count($reviews) }}</span></h4>
                                                         @foreach ($reviews as $review)
@@ -290,8 +290,8 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                </div> --}}
-                                                {{-- <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
+                                                </div>
+                                                <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
                                                     @auth
                                                         @php
                                                             $isBrought = false;
@@ -363,7 +363,7 @@
                                                         @endif
                                                     @endauth
 
-                                                </div> --}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

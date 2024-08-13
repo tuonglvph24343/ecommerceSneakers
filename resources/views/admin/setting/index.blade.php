@@ -33,7 +33,7 @@
 
                             @include('admin.setting.email-configuration')
 
-                            {{-- @include('admin.setting.logo-setting') --}}
+                            @include('admin.setting.logo-setting')
 
                             {{-- @include('admin.setting.pusher-setting') --}}
                           </div>

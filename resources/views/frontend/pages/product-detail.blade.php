@@ -82,7 +82,7 @@
                             @else
                                 <h4>{{ $settings->currency_icon }}{{ $product->price }}</h4>
                             @endif
-                            {{-- <p class="wsus__pro_rating">
+                            <p class="wsus__pro_rating">
                                 @php
                                     $avgRating = $product->reviews()->avg('rating');
                                     $fullRating = round($avgRating);
@@ -97,7 +97,7 @@
                                 @endfor
 
                                 <span>({{ count($product->reviews) }} review)</span>
-                            </p> --}}
+                            </p>
                             <p class="description">{!! $product->short_description !!}</p>
 
                             <form class="shopping-cart-form">

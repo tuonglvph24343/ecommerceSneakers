@@ -197,36 +197,7 @@ class PaymentController extends Controller
     }
 
 
-    /** Stripe Payment */
-
-    // public function payWithStripe(Request $request)
-    // {
-
-    //     // calculate payable amount depending on currency rate
-    //     $stripeSetting = StripeSetting::first();
-    //     $total = getFinalPayableAmount();
-    //     $payableAmount = round($total * $stripeSetting->currency_rate, 2);
-
-    //     Stripe::setApiKey($stripeSetting->secret_key);
-    //    $response = Charge::create([
-    //         "amount" => $payableAmount * 100,
-    //         "currency" => $stripeSetting->currency_name,
-    //         "source" => $request->stripe_token,
-    //         "description" => "product purchase!"
-    //     ]);
-
-    //     if($response->status === 'succeeded'){
-    //         $this->storeOrder('stripe', 1, $response->id, $payableAmount, $stripeSetting->currency_name);
-    //         // clear session
-    //         $this->clearSession();
-
-    //         return redirect()->route('user.payment.success');
-    //     }else {
-    //         toastr('Someting went wrong try agin later!', 'error', 'Error');
-    //         return redirect()->route('user.payment');
-    //     }
-
-    // }
+ 
 
     /** Razorpay payment */
     public function payWithRazorPay(Request $request)
@@ -261,27 +232,27 @@ class PaymentController extends Controller
     }
 
     /** pay with cod */
-    // public function payWithCod(Request $request)
-    // {
-    //     $codPaySetting = CodSetting::first();
-    //     $setting = GeneralSetting::first();
-    //     if($codPaySetting->status == 0){
-    //         return redirect()->back();
-    //     }
+    public function payWithCod(Request $request)
+    {
+        $codPaySetting = CodSetting::first();
+        $setting = GeneralSetting::first();
+        if($codPaySetting->status == 0){
+            return redirect()->back();
+        }
 
-    //     // amount calculation
-    //    $total = getFinalPayableAmount();
-    //    $payableAmount = round($total, 2);
+        // amount calculation
+       $total = getFinalPayableAmount();
+       $payableAmount = round($total, 2);
 
 
-    //     $this->storeOrder('COD', 0, \Str::random(10), $payableAmount, $setting->currency_name);
-    //     // clear session
-    //     $this->clearSession();
+        $this->storeOrder('COD', 0, \Str::random(10), $payableAmount, $setting->currency_name);
+        // clear session
+        $this->clearSession();
 
-    //     return redirect()->route('user.payment.success');
+        return redirect()->route('user.payment.success');
             
 
-    // }
+    }
 
     // public function payWithVnPay()
     // {

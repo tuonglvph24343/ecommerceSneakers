@@ -124,5 +124,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     
     /** Razorpay routes */
     Route::post('razorpay/payment', [PaymentController::class, 'payWithRazorPay'])->name('razorpay.payment');
+    Route::get('cod/payment', [PaymentController::class, 'payWithCod'])->name('cod.payment');
+
 
 });

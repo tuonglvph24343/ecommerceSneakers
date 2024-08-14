@@ -86,7 +86,7 @@
 
                             @include('frontend.pages.payment-gateway.razorpay')
 
-                            {{-- @include('frontend.pages.payment-gateway.cod') --}}
+                            @include('frontend.pages.payment-gateway.cod')
                             {{-- @include('frontend.pages.payment-gateway.vnpay')  --}}
 
 

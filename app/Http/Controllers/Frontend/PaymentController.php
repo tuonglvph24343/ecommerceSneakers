@@ -229,36 +229,36 @@ class PaymentController extends Controller
     // }
 
     /** Razorpay payment */
-    // public function payWithRazorPay(Request $request)
-    // {
-    //    $razorPaySetting = RazorpaySetting::first();
-    //    $api = new Api($razorPaySetting->razorpay_key, $razorPaySetting->razorpay_secret_key);
+    public function payWithRazorPay(Request $request)
+    {
+       $razorPaySetting = RazorpaySetting::first();
+       $api = new Api($razorPaySetting->razorpay_key, $razorPaySetting->razorpay_secret_key);
 
-    //    // amount calculation
-    //    $total = getFinalPayableAmount();
-    //    $payableAmount = round($total * $razorPaySetting->currency_rate, 2);
-    //    $payableAmountInPaisa = $payableAmount * 100;
+       // amount calculation
+       $total = getFinalPayableAmount();
+       $payableAmount = round($total * $razorPaySetting->currency_rate, 2);
+       $payableAmountInPaisa = $payableAmount * 100;
 
-    //    if($request->has('razorpay_payment_id') && $request->filled('razorpay_payment_id')){
-    //         try{
-    //             $response = $api->payment->fetch($request->razorpay_payment_id)
-    //                 ->capture(['amount' => $payableAmountInPaisa]);
-    //         }catch(\Exception $e){
-    //             toastr($e->getMessage(), 'error', 'Error');
-    //             return redirect()->back();
-    //         }
+       if($request->has('razorpay_payment_id') && $request->filled('razorpay_payment_id')){
+            try{
+                $response = $api->payment->fetch($request->razorpay_payment_id)
+                    ->capture(['amount' => $payableAmountInPaisa]);
+            }catch(\Exception $e){
+                toastr($e->getMessage(), 'error', 'Error');
+                return redirect()->back();
+            }
 
 
-    //         if($response['status'] == 'captured'){
-    //             $this->storeOrder('razorpay', 1, $response['id'], $payableAmount, $razorPaySetting->currency_name);
-    //             // clear session
-    //             $this->clearSession();
+            if($response['status'] == 'captured'){
+                $this->storeOrder('razorpay', 1, $response['id'], $payableAmount, $razorPaySetting->currency_name);
+                // clear session
+                $this->clearSession();
 
-    //             return redirect()->route('user.payment.success');
-    //         }
+                return redirect()->route('user.payment.success');
+            }
 
-    //    }
-    // }
+       }
+    }
 
     /** pay with cod */
     // public function payWithCod(Request $request)

@@ -121,4 +121,8 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     /** Vnpay routes */
     Route::post('vnpay/payment', [PaymentController::class, 'payWithVnPay'])->name('vnpay.payment');
 
+    
+    /** Razorpay routes */
+    Route::post('razorpay/payment', [PaymentController::class, 'payWithRazorPay'])->name('razorpay.payment');
+
 });

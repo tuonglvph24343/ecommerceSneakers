@@ -46,18 +46,18 @@
                                 <button class="nav-link common_btn active" id="v-pills-home-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-paypal" type="button" role="tab" aria-controls="v-pills-paypal"
                                 aria-selected="true">Paypal</button>
-
+{{-- 
                                 <button class="nav-link common_btn" id="v-pills-profile-tab" data-bs-toggle="pill"
                                     data-bs-target="#v-pills-stripe" type="button" role="tab"
-                                    aria-controls="v-pills-stripe" aria-selected="false">Stripe</button>
+                                    aria-controls="v-pills-stripe" aria-selected="false">Stripe</button> --}}
 
                                 <button class="nav-link common_btn" id="v-pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-razorpay" type="button" role="tab"
                                 aria-controls="v-pills-stripe" aria-selected="false">RazorPay</button>
 
-                                <button class="nav-link common_btn" id="v-pills-profile-tab" data-bs-toggle="pill"
+                                {{-- <button class="nav-link common_btn" id="v-pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-razorpay" type="button" role="tab"
-                                aria-controls="v-pills-stripe" aria-selected="false">VnPay</button>
+                                aria-controls="v-pills-stripe" aria-selected="false">VnPay</button> --}}
 
                                 <button class="nav-link common_btn" id="v-pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-cod" type="button" role="tab"
@@ -82,12 +82,12 @@
                                 </div>
                             </div>
 
-                            {{-- @include('frontend.pages.payment-gateway.stripe')
+                            {{-- @include('frontend.pages.payment-gateway.stripe') --}}
 
                             @include('frontend.pages.payment-gateway.razorpay')
 
-                            @include('frontend.pages.payment-gateway.cod') --}}
-                            @include('frontend.pages.payment-gateway.vnpay') 
+                            {{-- @include('frontend.pages.payment-gateway.cod') --}}
+                            {{-- @include('frontend.pages.payment-gateway.vnpay')  --}}
 
 
 

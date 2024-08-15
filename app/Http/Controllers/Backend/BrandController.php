@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\BrandDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Traits\ImageUploadTrait;
 use Str;
@@ -85,9 +86,9 @@ class BrandController extends Controller
     public function destroy(string $id)
     {
         $brand = Brand::findOrFail($id);
-        // if(Product::where('brand_id', $brand->id)->count() > 0){
-        //     return response(['status' => 'error', 'message' => 'This brand have products you can\'t delete it.']);
-        // }
+        if(Product::where('brand_id', $brand->id)->count() > 0){
+            return response(['status' => 'error', 'message' => 'This brand have products you can\'t delete it.']);
+        }
         $this->deleteImage($brand->logo);
         $brand->delete();
 

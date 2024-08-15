@@ -13,7 +13,7 @@
     <li><a class="" href="{{url('/')}}"><i class="fas fa-home"></i>Go To Home Page</a></li>
 
     @if (auth()->user()->role === 'vendor')
-    <li><a class="{{setActive(['vendor.dashbaord'])}}" href="{{route('vendor.dashbaord')}}"><i class="fas fa-tachometer"></i>Go to Vendor Dashboard</a></li>
+    <li><a class="{{setActive(['vendor.dashboard'])}}" href="{{route('vendor.dashboard')}}"><i class="fas fa-tachometer"></i>Go to Vendor Dashboard</a></li>
     @endif
 
 

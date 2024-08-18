@@ -80,7 +80,8 @@ Route::post('contact', [PageController::class, 'handleContactForm'])->name('hand
 
 /** Product track route */
 Route::get('product-traking', [ProductTrackController::class, 'index'])->name('product-traking.index');
-
+/** Product routes */
+Route::get('show-product-modal/{id}', [HomeController::class, 'ShowProductModal'])->name('show-product-modal');
 
 
 

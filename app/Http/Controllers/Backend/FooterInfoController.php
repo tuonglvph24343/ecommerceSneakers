@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\FooterInfo;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+
 
 class FooterInfoController extends Controller
 {
@@ -79,7 +81,7 @@ class FooterInfoController extends Controller
 
             ]);
 
-        // Cache::forget('footer_info');
+        Cache::forget('footer_info');
 
         toastr('Updated successfully!', 'success', 'success');
 

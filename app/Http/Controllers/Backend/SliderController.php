@@ -33,7 +33,7 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+       $request->validate([
             'banner' => ['required','image', 'max:2000'],
             'type' => ['string', 'max:200'],
             'title' => ['required','max:200'],
@@ -57,11 +57,12 @@ class SliderController extends Controller
        $slider->status = $request->status;
        $slider->save();
 
-    //    Cache::forget('sliders');
+       Cache::forget('sliders');
 
        toastr('Created Successfully!', 'success');
 
        return redirect()->back();
+
     }
 
     /**
@@ -69,8 +70,7 @@ class SliderController extends Controller
      */
     public function show(string $id)
     {
-        // $slider = Slider::findOrFail($id);
-       
+        //
     }
 
     /**

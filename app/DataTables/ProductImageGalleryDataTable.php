@@ -72,8 +72,8 @@ class ProductImageGalleryDataTable extends DataTable
         return [
 
             Column::make('id')->width(100),
-            Column::make('image'),
-            Column::computed('action')
+            Column::make('image')->title('Hình ảnh'),
+            Column::computed('action')->title('Trạng thái')
             ->exportable(false)
             ->printable(false)
             ->width(400)

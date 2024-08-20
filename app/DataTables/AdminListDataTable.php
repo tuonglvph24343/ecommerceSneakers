@@ -87,10 +87,10 @@ class AdminListDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
+            Column::make('name')->title('Tên'),
             Column::make('email'),
-            Column::make('role'),
-            Column::make('status'),
+            Column::make('role')->title('Vai trò'),
+            Column::make('status')->title('Trạng thái'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

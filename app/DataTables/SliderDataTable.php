@@ -32,8 +32,8 @@ class SliderDataTable extends DataTable
            return $img = "<img width='100px' src='".asset($query->banner)."' ></img>";
          })
          ->addColumn('status', function($query){
-             $active = '<i class="badge badge-success">Active</i>';
-             $inActive = '<i class="badge badge-danger">Inactive</i>';
+             $active = '<i class="badge badge-success">Hoạt động</i>';
+             $inActive = '<i class="badge badge-danger">Không hoạt động</i>';
              if($query->status == 1){
                  return $active;
              }else {
@@ -82,9 +82,9 @@ class SliderDataTable extends DataTable
         return [
             Column::make('id')->width(100),
             Column::make('banner')->width(200),
-            Column::make('title'),
-            Column::make('serial'),
-            Column::make('status'),
+            Column::make('title')->title('Tiêu đề'),
+            Column::make('serial')->title('Loại bài'),
+            Column::make('status')->title('Trạng thái'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

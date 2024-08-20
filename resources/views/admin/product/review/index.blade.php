@@ -4,7 +4,7 @@
       <!-- Main Content -->
         <section class="section">
           <div class="section-header">
-            <h1>Product Review</h1>
+            <h1>Đánh giá sản phẩm</h1>
           </div>
 
           <div class="section-body">
@@ -13,7 +13,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>All Reviews</h4>
+                    <h4>Tất cả đánh giá</h4>
 
                   </div>
                   <div class="card-body">

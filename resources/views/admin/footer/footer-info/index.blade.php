@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>phone</label>
+                                    <label>Số điện thoại</label>
                                     <input type="text" class="form-control" name="phone" value="{{@$footerInfo->phone}}">
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>address</label>
+                            <label>Địa chỉ</label>
                             <input type="text" class="form-control" name="address" value="{{@$footerInfo->address}}">
                         </div>
 
@@ -51,7 +51,7 @@
                             <input type="text" class="form-control" name="copyright" value="{{@$footerInfo->copyright}}">
                         </div>
 
-                        <button type="submmit" class="btn btn-primary">Update</button>
+                        <button type="submmit" class="btn btn-primary">Cập nhật</button>
                     </form>
                   </div>
 

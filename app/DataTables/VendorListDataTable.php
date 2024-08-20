@@ -81,11 +81,11 @@ class VendorListDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
+            Column::make('name')->title('Tên'),
             Column::make('email'),
-            Column::make('shop_name'),
-            Column::make('role'),
-            Column::make('status'),
+            Column::make('shop_name')->title('Tên cửa hàng'),
+            Column::make('role')->title('Vai trò'),
+            Column::make('status')->title('Trạng thái'),
         ];
     }
 

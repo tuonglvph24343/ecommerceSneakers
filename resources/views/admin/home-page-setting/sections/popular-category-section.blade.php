@@ -9,11 +9,11 @@
             <form action="{{route('admin.popular-category-section')}}" method="POST">
                 @csrf
                 @method('PUT')
-                <h5>Category 1</h5>
+                <h5>Danh mục 1</h5>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Category</label>
+                            <label>Danh mục</label>
                             <select name="cat_one" class="form-control main-category">
                                 <option value="">Select</option>
                                 @foreach ($categories as $category)
@@ -27,7 +27,7 @@
                             @php
                              $subCategories = \App\Models\SubCategory::where('category_id', $popularCategorySection[0]->category)->get();
                             @endphp
-                            <label>Sub Category</label>
+                            <label>Danh mục phụ</label>
                             <select name="sub_cat_one" id="" class="form-control sub-category">
                                 <option value="">select</option>
                                 @foreach ($subCategories as $subCategory)
@@ -41,7 +41,7 @@
                             @php
                             $childCategories = \App\Models\ChildCategory::where('sub_category_id', $popularCategorySection[0]->sub_category)->get();
                             @endphp
-                            <label>Child Category</label>
+                            <label>Danh mục con</label>
                             <select name="child_cat_one" id="" class="form-control child-category">
                                 <option value="">select</option>
                                 @foreach ($childCategories as $childCategory)
@@ -54,11 +54,11 @@
                     </div>
                 </div>
 
-                <h5>Category 2</h5>
+                <h5>Danh mục 2</h5>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Category</label>
+                            <label>Danh mục</label>
                             <select name="cat_two" id="" class="form-control main-category">
                                 <option value="">Select</option>
                                 @foreach ($categories as $category)
@@ -72,7 +72,7 @@
                             @php
                             $subCategories = \App\Models\SubCategory::where('category_id', $popularCategorySection[1]->category)->get();
                            @endphp
-                            <label>Sub Category</label>
+                            <label>Danh mục phụ</label>
                             <select name="sub_cat_two" id="" class="form-control sub-category">
                                 <option value="">select</option>
                                 @foreach ($subCategories as $subCategory)
@@ -86,7 +86,7 @@
                             @php
                             $childCategories = \App\Models\ChildCategory::where('sub_category_id', $popularCategorySection[1]->sub_category)->get();
                             @endphp
-                            <label>Child Category</label>
+                            <label>Danh mục con</label>
                             <select name="child_cat_two" id="" class="form-control child-category">
                                 <option value="">select</option>
                                 @foreach ($childCategories as $childCategory)
@@ -98,11 +98,11 @@
                 </div>
 
 
-                <h5>Category 3</h5>
+                <h5>Danh mục 3</h5>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Category</label>
+                            <label>Danh mục</label>
                             <select name="cat_three" id="" class="form-control main-category">
                                 <option value="">Select</option>
                                 @foreach ($categories as $category)
@@ -116,7 +116,7 @@
                             @php
                             $subCategories = \App\Models\SubCategory::where('category_id', $popularCategorySection[2]->category)->get();
                            @endphp
-                            <label>Sub Category</label>
+                            <label>Danh mục phụ</label>
                             <select name="sub_cat_three" id="" class="form-control sub-category">
                                 <option value="">select</option>
                                 @foreach ($subCategories as $subCategory)
@@ -130,7 +130,7 @@
                             @php
                             $childCategories = \App\Models\ChildCategory::where('sub_category_id', $popularCategorySection[2]->sub_category)->get();
                             @endphp
-                            <label>Child Category</label>
+                            <label>Danh mục con</label>
                             <select name="child_cat_three" id="" class="form-control child-category">
                                 <option value="">select</option>
                                 @foreach ($childCategories as $childCategory)
@@ -141,11 +141,11 @@
                     </div>
                 </div>
 
-                <h5>Category 4</h5>
+                <h5>Danh mục 4</h5>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Category</label>
+                            <label>Danh mục</label>
                             <select name="cat_four" id="" class="form-control main-category">
                                 <option value="">Select</option>
                                 @foreach ($categories as $category)
@@ -159,7 +159,7 @@
                             @php
                             $subCategories = \App\Models\SubCategory::where('category_id', $popularCategorySection[3]->category)->get();
                            @endphp
-                            <label>Sub Category</label>
+                            <label>Danh mục phụ</label>
                             <select name="sub_cat_four" id="" class="form-control sub-category">
                                 <option value="">select</option>
                                 @foreach ($subCategories as $subCategory)
@@ -173,7 +173,7 @@
                             @php
                             $childCategories = \App\Models\ChildCategory::where('sub_category_id', $popularCategorySection[3]->sub_category)->get();
                             @endphp
-                            <label>Child Category</label>
+                            <label>Danh mục con</label>
                             <select name="child_cat_four" id="" class="form-control child-category">
                                 <option value="">select</option>
                                 @foreach ($childCategories as $childCategory)
@@ -186,7 +186,7 @@
 
 
 
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Cập nhật</button>
             </form>
         </div>
     </div>

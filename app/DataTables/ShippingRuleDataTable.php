@@ -52,9 +52,9 @@ class ShippingRuleDataTable extends DataTable
             })
             ->addColumn('type', function($query){
                 if($query->type === 'min_cost'){
-                    return '<i class="badge badge-primary">Minimum Order Amount</i>';
+                    return '<i class="badge badge-primary">Số tiền đặt hàng tối thiểu</i>';
                 }else {
-                    return '<i class="badge badge-success">Flate Amount</i>';
+                    return '<i class="badge badge-success">Số tiền cố định</i>';
                 }
             })
             ->addColumn('min_cost', function($query){
@@ -109,11 +109,11 @@ class ShippingRuleDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('name'),
-            Column::make('type'),
-            Column::make('min_cost'),
-            Column::make('cost'),
-            Column::make('status'),
+            Column::make('name')->title('Tên'),
+            Column::make('type')->title('Kiểu'),
+            Column::make('min_cost')->title('Chi phí tối thiếu'),
+            Column::make('cost')->title('Chi phí'),
+            Column::make('status')->title('trạng thái'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

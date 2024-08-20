@@ -21,7 +21,7 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label>Preview</label>
+                            <label>Xem trước</label>
                             <br>
                             <img width="200" src="{{asset($slider->banner)}}" alt="">
                         </div>
@@ -31,15 +31,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Type</label>
+                            <label>Kiểu</label>
                             <input type="text" class="form-control" name="type" value="{{$slider->type}}">
                         </div>
                         <div class="form-group">
-                            <label>Title</label>
+                            <label>Tiêu đề</label>
                             <input type="text" class="form-control" name="title"  value="{{$slider->title}}">
                         </div>
                         <div class="form-group">
-                            <label>Starting Price</label>
+                            <label>Giá khởi điểm</label>
                             <input type="text" class="form-control" name="starting_price" value="{{$slider->starting_price}}">
                         </div>
                         <div class="form-group">
@@ -47,17 +47,17 @@
                             <input type="text" class="form-control" name="btn_url" value="{{$slider->btn_url}}">
                         </div>
                         <div class="form-group">
-                            <label>Serial</label>
+                            <label>Loại bài</label>
                             <input type="text" class="form-control" name="serial" value="{{$slider->serial}}">
                         </div>
                         <div class="form-group">
-                            <label for="inputState">Status</label>
+                            <label for="inputState">Trạng thái</label>
                             <select id="inputState" class="form-control" name="status">
-                              <option {{$slider->status == 1 ? 'selected': ''}} value="1">Active</option>
-                              <option {{$slider->status == 0 ? 'selected': ''}} value="0">Inactive</option>
+                              <option {{$slider->status == 1 ? 'selected': ''}} value="1">Hoạt động</option>
+                              <option {{$slider->status == 0 ? 'selected': ''}} value="0">Không hoạt động</option>
                             </select>
                           </div>
-                        <button type="submmit" class="btn btn-primary">Update</button>
+                        <button type="submmit" class="btn btn-primary">Cập nhật</button>
                     </form>
                   </div>
 

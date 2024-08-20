@@ -31,8 +31,8 @@ class ProductDataTable extends DataTable
                 <i class="fas fa-cog"></i>
                 </button>
                 <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-                  <a class="dropdown-item has-icon" href="'.route('admin.products-image-gallery.index', ['product' => $query->id]).'"><i class="far fa-heart"></i> Image Gallery</a>
-                  <a class="dropdown-item has-icon" href="'.route('admin.products-variant.index', ['product' => $query->id]).'"><i class="far fa-file"></i> Variants</a>
+                  <a class="dropdown-item has-icon" href="'.route('admin.products-image-gallery.index', ['product' => $query->id]).'"><i class="far fa-heart"></i> Thư viện ảnh</a>
+                  <a class="dropdown-item has-icon" href="'.route('admin.products-variant.index', ['product' => $query->id]).'"><i class="far fa-file"></i> Các biến thể</a>
                 </div>
               </div>';
 
@@ -44,17 +44,17 @@ class ProductDataTable extends DataTable
             ->addColumn('type', function($query){
                 switch ($query->product_type) {
                     case 'new_arrival':
-                        return '<i class="badge badge-success">New Arrival</i>';
+                        return '<i class="badge badge-success">Hàng mới</i>';
                         break;
                     case 'featured_product':
-                        return '<i class="badge badge-warning">Featured Product</i>';
+                        return '<i class="badge badge-warning">Hàng nổi bật</i>';
                         break;
                     case 'top_product':
-                        return '<i class="badge badge-info">Top Product</i>';
+                        return '<i class="badge badge-info">Sản phẩm hàng đầu </i>';
                         break;
 
                     case 'best_product':
-                        return '<i class="badge badge-danger">Top Product</i>';
+                        return '<i class="badge badge-danger">Sản phẩm tốt nhất</i>';
                         break;
 
                     default:
@@ -118,11 +118,11 @@ class ProductDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('image'),
-            Column::make('name'),
-            Column::make('price'),
-            Column::make('type')->width(150),
-            Column::make('status'),
+            Column::make('image')->title('Hình ảnh'),
+            Column::make('name')->title('Tên'),
+            Column::make('price')->title('Giá sản phẩm'),
+            Column::make('type')->width(150)->title('kiểu'),
+            Column::make('status')->title('trạng thái'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

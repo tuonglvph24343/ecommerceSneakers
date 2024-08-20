@@ -18,14 +18,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Smtp username</label>
+                            <label>Tên người dùng Smtp </label>
                             <input type="text" class="form-control" name="username" value="{{$emailSettings->username}}">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Smtp password</label>
+                            <label>Mật khẩu Smtp</label>
                             <input type="text" class="form-control" name="password" value="{{$emailSettings->password}}">
                         </div>
                     </div>
@@ -35,14 +35,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Mail port</label>
+                            <label>Cổng thư</label>
                             <input type="text" class="form-control" name="port" value="{{$emailSettings->port}}">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Mail Encryption</label>
+                            <label>Mã hoá thư</label>
                             <select name="encryption" id="" class="form-control">
                                     <option {{$emailSettings->encryption == 'tls' ? 'selected' : ''}} value="tls">TLS</option>
                                     <option {{$emailSettings->encryption == 'ssl' ? 'selected' : ''}} value="ssl">SSL</option>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Cập nhật</button>
             </form>
         </div>
     </div>

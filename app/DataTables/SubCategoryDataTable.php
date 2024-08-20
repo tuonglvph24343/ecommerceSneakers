@@ -86,10 +86,10 @@ class SubCategoryDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
-            Column::make('slug'),
-            Column::make('category'),
-            Column::make('status'),
+            Column::make('name')->title('Tên'),
+            // Column::make('slug'),
+            Column::make('category')->title('Danh mục'),
+            Column::make('status')->title('Trạng thái'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

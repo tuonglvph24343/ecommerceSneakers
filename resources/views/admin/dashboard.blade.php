@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Dashboard</h1>
+            <h1>Bảng điều khiển </h1>
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -14,7 +14,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Todays Orders</h4>
+                                <h4> Đơn hàng hôm nay</h4>
                             </div>
                             <div class="card-body">
                                 {{ $todaysOrder }}
@@ -31,7 +31,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Todays Peding Orders</h4>
+                                <h4>Đơn hàng chờ xử lý hôm nay</h4>
                             </div>
                             <div class="card-body">
                                 {{ $todaysPendingOrder }}
@@ -49,7 +49,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Orders</h4>
+                                <h4>Tổng số đơn hàng</h4>
                             </div>
                             <div class="card-body">
                                 {{ $totalOrders }}
@@ -67,7 +67,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Pending Orders</h4>
+                                <h4>Tổng số đơn hàng chờ xử lý</h4>
                             </div>
                             <div class="card-body">
                                 {{ $totalPendingOrders }}
@@ -85,7 +85,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Canceled Orders</h4>
+                                <h4>Tổng số đơn hàng bị hủy</h4>
                             </div>
                             <div class="card-body">
                                 {{ $totalCanceledOrders }}
@@ -103,7 +103,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Complelte Orders</h4>
+                                <h4> Tổng số đơn hàng đã hoàn thành</h4>
                             </div>
                             <div class="card-body">
                                 {{ $totalCompleteOrders }}
@@ -120,7 +120,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Todays Earnings</h4>
+                                <h4>Doanh thu hôm nay</h4>
                             </div>
                             <div class="card-body">
                                 {{$settings->currency_icon}}{{ $todaysEarnings }}
@@ -138,7 +138,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>This Month Earnings</h4>
+                                <h4> Doanh thu tháng này</h4>
                             </div>
                             <div class="card-body">
                                 {{$settings->currency_icon}}{{ $monthEarnings }}
@@ -156,7 +156,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>This Years Earnings</h4>
+                                <h4>Doanh thu năm nay</h4>
                             </div>
                             <div class="card-body">
                                 {{$settings->currency_icon}}{{ $yearEarnings }}
@@ -174,7 +174,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Reviews</h4>
+                                <h4>Tổng số đánh giá</h4>
                             </div>
                             <div class="card-body">
                                 {{ $totalReview }}
@@ -193,7 +193,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Brands</h4>
+                                <h4> Tổng số thương hiệu</h4>
                             </div>
                             <div class="card-body">
                                 {{ $totalBrands }}
@@ -211,7 +211,7 @@
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Total Categories</h4>
+                                <h4>Tổng số danh mục</h4>
                             </div>
                             <div class="card-body">
                                 {{ $totalCategories }}
@@ -229,7 +229,7 @@
                     </div>
                     <div class="card-wrap">
                         <div class="card-header">
-                            <h4>Total Blogs</h4>
+                            <h4>Tổng số bài viết blog</h4>
                         </div>
                         <div class="card-body">
                             {{-- {{$totalBlogs}} --}}
@@ -248,7 +248,7 @@
                      </div>
                      <div class="card-wrap">
                          <div class="card-header">
-                             <h4>Total Subscribers</h4>
+                             <h4>Tổng số người đăng ký</h4>
                          </div>
                          <div class="card-body">
                              {{$totalSubscriber}}
@@ -266,7 +266,8 @@
                      </div>
                      <div class="card-wrap">
                          <div class="card-header">
-                             <h4>Total Vendors</h4>
+                             <h4>Tổng số nhà cung cấp
+                            </h4>
                          </div>
                          <div class="card-body">
                              {{$totalVendors}}
@@ -284,7 +285,7 @@
                      </div>
                      <div class="card-wrap">
                          <div class="card-header">
-                             <h4>Total Users</h4>
+                             <h4>Tổng số người dùng</h4>
                          </div>
                          <div class="card-body">
                              {{$totalUsers}}

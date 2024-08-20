@@ -32,8 +32,8 @@ class BrandDataTable extends DataTable
                return "<img width='100px' src='".asset($query->logo)."' ></img>";
             })
             ->addColumn('is_featured', function($query){
-                $active = '<i class="badge badge-success">Yes</i>';
-                $inActive = '<i class="badge badge-danger">No</i>';
+                $active = '<i class="badge badge-success">Có</i>';
+                $inActive = '<i class="badge badge-danger">Không</i>';
                 if($query->is_featured == 1){
                     return $active;
                 }else {
@@ -97,9 +97,9 @@ class BrandDataTable extends DataTable
 
             Column::make('id'),
             Column::make('logo')->width(200),
-            Column::make('name')->width(300),
-            Column::make('is_featured'),
-            Column::make('status'),
+            Column::make('name')->width(300)->title('Tên'),
+            Column::make('is_featured')->title('Nổi bật'),
+            Column::make('status')->title('Trạng thái'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

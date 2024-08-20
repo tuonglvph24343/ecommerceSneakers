@@ -10,11 +10,11 @@
         <div class="d-sm-none d-lg-inline-block">Hi, {{auth()->user()->name}}</div></a>
         <div class="dropdown-menu dropdown-menu-right">
           <a href="{{route('admin.profile')}}" class="dropdown-item has-icon">
-            <i class="far fa-user"></i> Profile
+            <i class="far fa-user"></i> Hồ sơ
           </a>
 
           <a href="{{route('admin.settings.index')}}" class="dropdown-item has-icon">
-            <i class="fas fa-cog"></i> Settings
+            <i class="fas fa-cog"></i> Cài đặt
           </a>
           <div class="dropdown-divider"></div>
 
@@ -23,7 +23,7 @@
             @csrf
                 <a href="{{route('logout')}}" onclick="event.preventDefault();
                 this.closest('form').submit();" class="dropdown-item has-icon text-danger">
-                    <i class="fas fa-sign-out-alt"></i> Logout
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
                 </a>
             </form>
         </div>

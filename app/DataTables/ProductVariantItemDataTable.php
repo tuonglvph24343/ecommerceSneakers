@@ -45,9 +45,9 @@ class ProductVariantItemDataTable extends DataTable
             })
             ->addColumn('is_default', function($query){
                 if($query->is_default == 1){
-                    return '<i class="badge badge-success">defalut</i>';
+                    return '<i class="badge badge-success">Mặc định</i>';
                 }else {
-                    return '<i class="badge badge-danger">no</i>';
+                    return '<i class="badge badge-danger">Không</i>';
                 }
             })
             ->addColumn('variant_name', function($query){
@@ -94,11 +94,11 @@ class ProductVariantItemDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
-            Column::make('variant_name'),
-            Column::make('price'),
-            Column::make('is_default'),
-            Column::make('status'),
+            Column::make('name')->title('Tên'),
+            Column::make('variant_name')->title('Tên biến thể'),
+            Column::make('price')->title('Giá biến thể'),
+            Column::make('is_default')->title('Mặc định'),
+            Column::make('status')->title('Trạng thái'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

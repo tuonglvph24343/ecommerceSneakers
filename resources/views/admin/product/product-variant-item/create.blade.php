@@ -4,7 +4,7 @@
       <!-- Main Content -->
         <section class="section">
           <div class="section-header">
-            <h1>Product Variant Items</h1>
+            <h1>Các mục biến thể</h1>
           </div>
 
           <div class="section-body">
@@ -13,7 +13,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Create Variant Item</h4>
+                    <h4>Tạo mục biến thể</h4>
 
                   </div>
                   <div class="card-body">
@@ -21,7 +21,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label>Variant Name</label>
+                            <label>Tên biến thể</label>
                             <input type="text" class="form-control" name="variant_name" value="{{$variant->name}}" readonly>
                         </div>
 
@@ -33,32 +33,32 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Item Name</label>
+                            <label>Tên danh mục</label>
                             <input type="text" class="form-control" name="name" value="">
                         </div>
 
                         <div class="form-group">
-                            <label>Price <code>(Set 0 for make it free)</code></label>
+                            <label>Giá <code>(Đặt giá là 0 để làm cho nó miễn phí)</code></label>
                             <input type="text" class="form-control" name="price" value="">
                         </div>
 
                         <div class="form-group">
-                            <label for="inputState">Is Default</label>
+                            <label for="inputState">Mặc định</label>
                             <select id="inputState" class="form-control" name="is_default">
                                 <option value="">Select</option>
-                              <option value="1">Yes</option>
-                              <option value="0">No</option>
+                              <option value="1">Có</option>
+                              <option value="0">Không</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputState">Status</label>
+                            <label for="inputState">Trạng thái</label>
                             <select id="inputState" class="form-control" name="status">
-                              <option value="1">Active</option>
-                              <option value="0">Inactive</option>
+                              <option value="1">Hoạt động</option>
+                              <option value="0">Không hoạt động</option>
                             </select>
                         </div>
-                        <button type="submmit" class="btn btn-primary">Create</button>
+                        <button type="submmit" class="btn btn-primary">Tạo</button>
                     </form>
                   </div>
 

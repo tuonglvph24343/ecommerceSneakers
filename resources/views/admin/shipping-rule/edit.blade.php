@@ -4,7 +4,7 @@
       <!-- Main Content -->
         <section class="section">
           <div class="section-header">
-            <h1>Shipping Rule</h1>
+            <h1>Quy tắc vận chuyển</h1>
           </div>
 
           <div class="section-body">
@@ -13,7 +13,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Update Shipping Rule</h4>
+                    <h4>Cập nhật quy tắc vận chuyển</h4>
 
                   </div>
                   <div class="card-body">
@@ -21,37 +21,37 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>Tên</label>
                             <input type="text" class="form-control" name="name" value="{{$shipping->name}}">
                         </div>
 
                         <div class="form-group">
-                            <label for="inputState">Type</label>
+                            <label for="inputState">Kiểu</label>
                             <select id="" class="form-control shipping-type" name="type">
-                              <option {{$shipping->type === 'flat_cost' ? 'selected' : ''}} value="flat_cost">Flat Cost</option>
-                              <option {{$shipping->type === 'min_cost' ? 'selected' : ''}} value="min_cost">Minimum Order Amount</option>
+                              <option {{$shipping->type === 'flat_cost' ? 'selected' : ''}} value="flat_cost"> Số tiền cố định</option>
+                              <option {{$shipping->type === 'min_cost' ? 'selected' : ''}} value="min_cost"> Số tiền đặt hàng tối thiểu</option>
                             </select>
                         </div>
 
                         <div class="form-group min_cost {{$shipping->type === 'min_cost' ? '' : 'd-none'}}">
-                            <label>Minimum Amount</label>
+                            <label>Số tiền tối thiểu</label>
                             <input type="text" class="form-control" name="min_cost" value="{{$shipping->min_cost}}">
                         </div>
 
                         <div class="form-group">
-                            <label>Cost</label>
+                            <label>Chi phí</label>
                             <input type="text" class="form-control" name="cost" value="{{$shipping->cost}}">
                         </div>
 
 
                         <div class="form-group">
-                            <label for="inputState">Status</label>
+                            <label for="inputState">Trạng thái</label>
                             <select id="inputState" class="form-control" name="status">
-                              <option {{$shipping->status === 1 ? 'selected' : ''}} value="1">Active</option>
-                              <option {{$shipping->status === 0 ? 'selected' : ''}} value="0">Inactive</option>
+                              <option {{$shipping->status === 1 ? 'selected' : ''}} value="1">Hoạt động</option>
+                              <option {{$shipping->status === 0 ? 'selected' : ''}} value="0">Không hoạt động</option>
                             </select>
                         </div>
-                        <button type="submmit" class="btn btn-primary">Update</button>
+                        <button type="submmit" class="btn btn-primary">Cập nhật</button>
                     </form>
                   </div>
 

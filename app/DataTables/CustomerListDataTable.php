@@ -78,9 +78,9 @@ class CustomerListDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
+            Column::make('name')->title('Tên'),
             Column::make('email'),
-            Column::make('status'),
+            Column::make('status')->title('Trạng thái'),
 
         ];
     }

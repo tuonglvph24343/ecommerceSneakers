@@ -88,12 +88,13 @@ class CouponDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('name'),
-            Column::make('discount_type'),
-            Column::make('discount'),
-            Column::make('start_date'),
-            Column::make('end_date'),
-            Column::make('status'),
+            Column::make('name')->title('Tên'),
+            Column::make('discount_type')->title('Loại giảm giá'),
+            Column::make('code')->title('Mã code'),
+            Column::make('discount')->title('Giảm giá'),
+            Column::make('start_date')->title('Ngày bắt đầu'),
+            Column::make('end_date')->title('Ngày kết thúc'),
+            Column::make('status')->title('Trạng thái'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

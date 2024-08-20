@@ -84,11 +84,11 @@ class AdminReviewDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('product'),
-            Column::make('user'),
-            Column::make('rating'),
-            Column::make('review'),
-            Column::make('status')
+            Column::make('product')->title('Sản phẩm'),
+            Column::make('user')->title('Người dùng'),
+            Column::make('rating')->title('Đánh giá'),
+            Column::make('review')->title('Nhận xét'),
+            Column::make('status')->title('Trạng thái')
         ];
     }
 

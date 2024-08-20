@@ -30,9 +30,9 @@ class NewsletterSubscriberDataTable extends DataTable
             ->addColumn('is_verified', function($query){
                 if($query->is_verified == 1){
 
-                    return '<i class="badge bg-success text-light">Yes</i>';
+                    return '<i class="badge bg-success text-light">Có</i>';
                 }else {
-                    return '<i class="badge bg-danger text-light">No</i>';
+                    return '<i class="badge bg-danger text-light">Không</i>';
                 }
             })
             ->rawColumns(['action', 'is_verified'])
@@ -77,7 +77,7 @@ class NewsletterSubscriberDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('email'),
-            Column::make('is_verified'),
+            Column::make('is_verified')->title('Đã xác minh'),
 
             Column::computed('action')
             ->exportable(false)

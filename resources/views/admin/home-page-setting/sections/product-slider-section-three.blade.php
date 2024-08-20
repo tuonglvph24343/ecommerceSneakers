@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Category</label>
+                            <label>Danh mục</label>
                             <select name="cat_one" class="form-control main-category">
                                 <option value="">Select</option>
                                 @foreach ($categories as $category)
@@ -28,7 +28,7 @@
                              $subCategories = \App\Models\SubCategory::where('category_id', $sliderSectionThree[0]['category'])->get();
                             @endphp
 
-                            <label>Sub Category</label>
+                            <label>Danh mục phụ</label>
                             <select name="sub_cat_one" id="" class="form-control sub-category">
                                 <option value="">select</option>
                                 @foreach ($subCategories as $subCategory)
@@ -43,7 +43,7 @@
                             @php
                             $childCategories = \App\Models\ChildCategory::where('sub_category_id', $sliderSectionThree[0]['sub_category'])->get();
                             @endphp
-                            <label>Child Category</label>
+                            <label>Danh mục con</label>
                             <select name="child_cat_one" id="" class="form-control child-category">
                                 <option value="">select</option>
                                 @foreach ($childCategories as $childCategory)
@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Category</label>
+                            <label>Danh mục</label>
                             <select name="cat_two" class="form-control main-category">
                                 <option value="">Select</option>
                                 @foreach ($categories as $category)
@@ -73,7 +73,7 @@
                              $subCategories = \App\Models\SubCategory::where('category_id', $sliderSectionThree[1]['category'])->get();
                             @endphp
 
-                            <label>Sub Category</label>
+                            <label>Danh mục phụ</label>
                             <select name="sub_cat_two" id="" class="form-control sub-category">
                                 <option value="">select</option>
                                 @foreach ($subCategories as $subCategory)
@@ -88,7 +88,7 @@
                             @php
                             $childCategories = \App\Models\ChildCategory::where('sub_category_id', $sliderSectionThree[1]['sub_category'])->get();
                             @endphp
-                            <label>Child Category</label>
+                            <label>Danh mục con</label>
                             <select name="child_cat_two" id="" class="form-control child-category">
                                 <option value="">select</option>
                                 @foreach ($childCategories as $childCategory)
@@ -100,7 +100,7 @@
                 </div>
 
 
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Cập nhật</button>
             </form>
         </div>
     </div>

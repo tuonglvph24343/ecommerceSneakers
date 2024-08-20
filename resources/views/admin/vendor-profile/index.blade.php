@@ -4,7 +4,7 @@
       <!-- Main Content -->
         <section class="section">
           <div class="section-header">
-            <h1>Vendor Profile</h1>
+            <h1>Hồ sơ nhà cung cấp</h1>
 
           </div>
 
@@ -14,13 +14,13 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Update Vendor Profile</h4>
+                    <h4>Cập nhật hồ sơ nha cung cấp</h4>
                   </div>
                   <div class="card-body">
                     <form action="{{route('admin.vendor-profile.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Preview</label>
+                            <label>Xem trước</label>
                             <br>
                             <img width="200px" src="{{asset($profile->banner)}}" alt="">
                         </div>
@@ -30,12 +30,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Shop Name</label>
+                            <label>Tên cửa hàng</label>
                             <input type="text" class="form-control" name="shop_name" value="{{$profile->shop_name}}">
                         </div>
 
                         <div class="form-group">
-                            <label>Phone</label>
+                            <label>Số điện thoại</label>
                             <input type="text" class="form-control" name="phone" value="{{$profile->phone}}">
                         </div>
                         <div class="form-group">
@@ -43,11 +43,11 @@
                             <input type="text" class="form-control" name="email"  value="{{$profile->email}}">
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
+                            <label>Địa chỉ</label>
                             <input type="text" class="form-control" name="address" value="{{$profile->address}}">
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
+                            <label>Mô tả</label>
                             <textarea class="summernote" name="description">{{$profile->description}}</textarea>
                         </div>
                         <div class="form-group">
@@ -63,7 +63,7 @@
                             <input type="text" class="form-control" name="insta_link" value="{{$profile->insta_link}}">
                         </div>
 
-                        <button type="submmit" class="btn btn-primary">Update</button>
+                        <button type="submmit" class="btn btn-primary">Cập nhật</button>
                     </form>
                   </div>
 

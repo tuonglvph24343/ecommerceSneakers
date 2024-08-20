@@ -4,10 +4,10 @@
       <!-- Main Content -->
         <section class="section">
           <div class="section-header">
-            <h1>Product Variant</h1>
+            <h1>biến thể Sản phẩm </h1>
           </div>
           <div class="mb-3">
-            <a href="{{route('admin.products.index')}}" class="btn btn-primary">Back</a>
+            <a href="{{route('admin.products.index')}}" class="btn btn-primary">Quay lại</a>
           </div>
           <div class="section-body">
 
@@ -15,9 +15,9 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Product: {{$product->name}}</h4>
+                    <h4>Sản phẩm: {{$product->name}}</h4>
                     <div class="card-header-action">
-                        <a href="{{route('admin.products-variant.create', ['product' => $product->id])}}" class="btn btn-primary"><i class="fas fa-plus"></i> Create New</a>
+                        <a href="{{route('admin.products-variant.create', ['product' => $product->id])}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo mới</a>
                     </div>
                   </div>
                   <div class="card-body">

@@ -4,7 +4,7 @@
       <!-- Main Content -->
         <section class="section">
           <div class="section-header">
-            <h1>Flash Sale</h1>
+            <h1>Khuyến mãi</h1>
           </div>
 
           <div class="section-body">
@@ -13,7 +13,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Flash Sale End Date</h4>
+                    <h4>Ngày kết thúc khuyến mãi</h4>
 
                   </div>
                   <div class="card-body">
@@ -22,10 +22,10 @@
                         @method('PUT')
                         <div class="">
                             <div class="form-group">
-                                <label>Sale End Date</label>
+                                <label>Ngày kết thúc sale</label>
                                 <input type="text" class="form-control datepicker" name="end_date" value="{{@$flashSaleDate->end_date}}">
                             </div>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
                         </div>
                     </form>
                   </div>
@@ -42,14 +42,14 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Add Flash Sale Products</h4>
+                    <h4>Thêm sản phẩm sale</h4>
 
                   </div>
                   <div class="card-body">
                     <form action="{{route('admin.flash-sale.add-product')}}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label>Add Product</label>
+                            <label>Thêm sản phẩm</label>
                             <select name="product" id="" class="form-control select2">
                                 <option value="">Select</option>
                                 @foreach ($products as $product)
@@ -61,26 +61,26 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Show at home?</label>
+                                    <label>Hiển thị trên trang chủ?</label>
                                     <select name="show_at_home" id="" class="form-control">
                                         <option value="">Select</option>
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                        <option value="1">Có</option>
+                                        <option value="0">Không</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Status</label>
+                                    <label>Trạng thái</label>
                                     <select name="status" id="" class="form-control">
                                         <option value="">Select</option>
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
+                                        <option value="1">Hoạt động</option>
+                                        <option value="0">Không hoạt động</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
 
                     </form>
                   </div>
@@ -97,7 +97,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>All Flash Sale Products</h4>
+                    <h4>Tất cả sản phẩm sale</h4>
 
                   </div>
                   <div class="card-body">

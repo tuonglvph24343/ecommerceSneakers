@@ -23,7 +23,7 @@ class ProductVariantDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $veriantItems = "<a href='".route('admin.products-variant-item.index', ['productId' => request()->product, 'variantId' => $query->id])."' class='btn btn-info mr-2'><i class='far fa-edit'></i> Variant Items</a>";
+                $veriantItems = "<a href='".route('admin.products-variant-item.index', ['productId' => request()->product, 'variantId' => $query->id])."' class='btn btn-info mr-2'><i class='far fa-edit'></i> Các mục biến thể</a>";
 
                 $editBtn = "<a href='".route('admin.products-variant.edit', $query->id)."' class='btn btn-primary'><i class='far fa-edit'></i></a>";
                 $deleteBtn = "<a href='".route('admin.products-variant.destroy', $query->id)."' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
@@ -85,8 +85,8 @@ class ProductVariantDataTable extends DataTable
     {
         return [
             Column::make('id')->width(80),
-            Column::make('name'),
-            Column::make('status'),
+            Column::make('name')->title('Tên'),
+            Column::make('status')->title('Trạng thái'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

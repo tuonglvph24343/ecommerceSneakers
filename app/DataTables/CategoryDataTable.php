@@ -87,8 +87,8 @@ class CategoryDataTable extends DataTable
         return [
             Column::make('id')->width(100),
             Column::make('icon')->width(300),
-            Column::make('name'),
-            Column::make('status')->width(200),
+            Column::make('name')->title('Tên'),
+            Column::make('status')->width(200)->title('Trạng thái'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

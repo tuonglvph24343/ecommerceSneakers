@@ -29,7 +29,7 @@ class OrderController extends Controller
     }
     public function processedOrders(processedOrderDataTable $dataTable)
     {
-        return $dataTable->render('admin.order.pending-order');
+        return $dataTable->render('admin.order.processed-order');
     }
     public function droppedOfOrders(droppedOffOrderDataTable $dataTable)
     {

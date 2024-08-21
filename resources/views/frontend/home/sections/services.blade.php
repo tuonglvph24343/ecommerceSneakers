@@ -4,29 +4,29 @@
             <div class="col-xl-3 col-sm-6 col-lg-3 pe-lg-0">
                 <div class="wsus__home_services_single home_service_single_2 border_left">
                     <i class="fal fa-truck"></i>
-                    <h5>Free Worldwide Shipping</h5>
-                    <p>Free shipping coast for all country</p>
+                    <h5>Miễn phí vận chuyển toàn cầu</h5>
+                    <p>Miễn phí vận chuyển cho tất cả các quốc gia</p>
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 col-lg-3 pe-lg-0">
                 <div class="wsus__home_services_single home_service_single_2">
                     <i class="fal fa-headset"></i>
-                    <h5>24/7 Customer Support</h5>
-                    <p>Friendly 24/7 customer support</p>
+                    <h5>Hỗ trợ khách hàng 24/7t</h5>
+                    <p>Hỗ trợ khách hàng thân thiện 24/7</p>
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 col-lg-3 pe-lg-0">
                 <div class="wsus__home_services_single home_service_single_2">
                     <i class="far fa-exchange-alt"></i>
-                    <h5>Money Back Guarantee</h5>
-                    <p>We return money within 30 days</p>
+                    <h5>Đảm bảo hoàn tiền</h5>
+                    <p>Chúng tôi hoàn tiền trong vòng 30 ngày</p>
                 </div>
             </div>
             <div class="col-xl-3 col-sm-6 col-lg-3">
                 <div class="wsus__home_services_single home_service_single_2">
                     <i class="fal fa-credit-card"></i>
-                    <h5>Secure Online Payment</h5>
-                    <p>We posess SSL / Secure Certificate</p>
+                    <h5>Thanh toán trực tuyến an toàn</h5>
+                    <p>Chúng tôi sở hữu chứng chỉ SSL / bảo mật</p>
                 </div>
             </div>
         </div>

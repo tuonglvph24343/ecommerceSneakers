@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-{{$settings->site_name}} || Checkout
+{{$settings->site_name}} || Kiểm tra
 @endsection
 
 @section('content')
@@ -13,10 +13,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>check out</h4>
+                        <h4>kiểm tra</h4>
                         <ul>
-                            <li><a href="{{route('home')}}">home</a></li>
-                            <li><a href="javascript:;">check out</a></li>
+                            <li><a href="{{route('home')}}">trang chủ</a></li>
+                            <li><a href="javascript:;">kiểm tra</a></li>
                         </ul>
                     </div>
                 </div>
@@ -37,9 +37,8 @@
                     <div class="col-xl-8 col-lg-7">
                         <div class="wsus__check_form">
                             <div class="d-flex">
-                                <h5>Shipping Details </h5>
-                            <a href="javascript:;" style="margin-left:auto;" class="common_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">add
-                                new address</a>
+                                <h5>chi tiết vận chuyển </h5>
+                            <a href="javascript:;" style="margin-left:auto;" class="common_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">thêm địa chỉ mới</a>
                             </div>
 
                             <div class="row">
@@ -50,17 +49,17 @@
                                             <input class="form-check-input shipping_address" data-id="{{$address->id}}" type="radio" name="flexRadioDefault"
                                                 id="flexRadioDefault1">
                                             <label class="form-check-label" for="flexRadioDefault1">
-                                                Select Address
+                                              chọn địa chỉ
                                             </label>
                                         </div>
                                         <ul>
-                                            <li><span>Name :</span> {{$address->name}}</li>
-                                            <li><span>Phone :</span> {{$address->phone}}</li>
+                                            <li><span>tên :</span> {{$address->name}}</li>
+                                            <li><span>số điện thoại :</span> {{$address->phone}}</li>
                                             <li><span>Email :</span> {{$address->email}}</li>
-                                            <li><span>Country :</span> {{$address->country}}</li>
-                                            <li><span>City :</span> {{$address->city}}</li>
-                                            <li><span>Zip Code :</span> {{$address->zip}}</li>
-                                            <li><span>Address :</span> {{$address->address}}</li>
+                                            <li><span>quốc gia :</span> {{$address->country}}</li>
+                                            <li><span>thanh phố :</span> {{$address->city}}</li>
+                                            <li><span>mã zip :</span> {{$address->zip}}</li>
+                                            <li><span>địa chỉ :</span> {{$address->address}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -70,7 +69,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="wsus__order_details" id="sticky_sidebar">
-                            <p class="wsus__product">shipping Methods</p>
+                            <p class="wsus__product">phương thức vận chuyển</p>
                             @foreach ($shippingMethods as $method)
                                 @if ($method->type === 'min_cost' && getCartTotal() >= $method->min_cost)
                                     <div class="form-check">
@@ -78,7 +77,7 @@
                                             value="{{$method->id}}" data-id="{{$method->cost}}">
                                         <label class="form-check-label" for="exampleRadios1">
                                             {{$method->name}}
-                                            <span>cost: ({{$settings->currency_icon}}{{$method->cost}})</span>
+                                            <span>chi phí: ({{$settings->currency_icon}}{{$method->cost}})</span>
                                         </label>
                                     </div>
                                 @elseif ($method->type === 'flat_cost')
@@ -87,24 +86,24 @@
                                             value="{{$method->id}}" data-id="{{$method->cost}}">
                                         <label class="form-check-label" for="exampleRadios1">
                                             {{$method->name}}
-                                            <span>cost: ({{$settings->currency_icon}}{{$method->cost}})</span>
+                                            <span>chi phí: ({{$settings->currency_icon}}{{$method->cost}})</span>
                                         </label>
                                     </div>
                                 @endif
                             @endforeach
 
                             <div class="wsus__order_details_summery">
-                                <p>subtotal: <span>{{$settings->currency_icon}}{{getCartTotal()}}</span></p>
-                                <p>shipping fee(+): <span id="shipping_fee">{{$settings->currency_icon}}0</span></p>
-                                <p>coupon(-): <span>{{$settings->currency_icon}}{{getCartDiscount()}}</span></p>
-                                <p><b>total:</b> <span><b id="total_amount" data-id="{{getMainCartTotal()}}">{{$settings->currency_icon}}{{getMainCartTotal()}}</b></span></p>
+                                <p>tổng cộng: <span>{{$settings->currency_icon}}{{getCartTotal()}}</span></p>
+                                <p>chi phí vận chuyển(+): <span id="shipping_fee">{{$settings->currency_icon}}0</span></p>
+                                <p>phiếu giảm giá(-): <span>{{$settings->currency_icon}}{{getCartDiscount()}}</span></p>
+                                <p><b>tổng:</b> <span><b id="total_amount" data-id="{{getMainCartTotal()}}">{{$settings->currency_icon}}{{getMainCartTotal()}}</b></span></p>
                             </div>
                             <div class="terms_area">
                                 <div class="form-check">
                                     <input class="form-check-input agree_term" type="checkbox" value="" id="flexCheckChecked3"
                                         checked>
                                     <label class="form-check-label" for="flexCheckChecked3">
-                                        I have read and agree to the website <a href="#">terms and conditions *</a>
+                                        Tôi đã đọc và đồng ý với các điều khoản và điều kiện của trang web *</a>
                                     </label>
                                 </div>
                             </div>
@@ -113,7 +112,7 @@
                                 <input type="hidden" name="shipping_address_id" value="" id="shipping_address_id">
 
                             </form>
-                            <a href="" id="submitCheckoutForm" class="common_btn">Place Order</a>
+                            <a href="" id="submitCheckoutForm" class="common_btn">đặt hàng</a>
                         </div>
                     </div>
                 </div>
@@ -125,7 +124,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">add new address</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">thêm địa chỉ mới</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body p-0">
@@ -135,12 +134,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="wsus__check_single_form">
-                                            <input type="text" placeholder="Name *" name="name" value="{{old('name')}}">
+                                            <input type="text" placeholder="tên *" name="name" value="{{old('name')}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="wsus__check_single_form">
-                                            <input type="text" placeholder="Phone *" name="phone" value="{{old('phone')}}">
+                                            <input type="text" placeholder="số điện thoại *" name="phone" value="{{old('phone')}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -152,7 +151,7 @@
                                     <div class="col-md-6">
                                         <div class="wsus__check_single_form">
                                             <select class="select_2" name="country">
-                                                <option value="">Country / Region *</option>
+                                                <option value="">quốc gia / khu vực *</option>
                                                 @foreach (config('settings.country_list') as $key => $county)
                                                     <option {{$county === old('country') ? 'selected' : ''}} value="{{$county}}">{{$county}}</option>
                                                 @endforeach
@@ -162,30 +161,30 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="wsus__check_single_form">
-                                            <input type="text" placeholder="State *" name="state" value="{{old('state')}}">
+                                            <input type="text" placeholder="trạng thái *" name="state" value="{{old('state')}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="wsus__check_single_form">
-                                            <input type="text" placeholder="Town / City *" name="city" value="{{old('city')}}">
+                                            <input type="text" placeholder="thị trấn / thành phố *" name="city" value="{{old('city')}}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="wsus__check_single_form">
-                                            <input type="text" placeholder="Zip *" name="zip" value="{{old('zip')}}">
+                                            <input type="text" placeholder="mã zip *" name="zip" value="{{old('zip')}}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="wsus__check_single_form">
-                                            <input type="text" placeholder="Address *" name="address" value="{{old('address')}}">
+                                            <input type="text" placeholder="địa chỉ *" name="address" value="{{old('address')}}">
                                         </div>
                                     </div>
 
                                     <div class="col-xl-12">
                                         <div class="wsus__check_single_form">
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
                                         </div>
                                     </div>
                                 </div>

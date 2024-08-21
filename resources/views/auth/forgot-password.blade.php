@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-{{$settings->site_name}} || Forgot Password
+{{$settings->site_name}} || Quên mật khẩu
 @endsection
 
 @section('content')
@@ -14,10 +14,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>forget password</h4>
+                        <h4>quên mật khẩu</h4>
                         <ul>
-                            <li><a href="#">login</a></li>
-                            <li><a href="#">forget password</a></li>
+                            <li><a href="#">đăng nhập</a></li>
+                            <li><a href="#">quên mật khẩu</a></li>
                         </ul>
                     </div>
                 </div>
@@ -38,20 +38,20 @@
                 <div class="col-xl-5 m-auto">
                     <div class="wsus__forget_area">
                         <span class="qiestion_icon"><i class="fal fa-question-circle"></i></span>
-                        <h4>forget password ?</h4>
-                        <p>enter the email address to register with <span>e-shop</span></p>
+                        <h4>quên mật khẩu?</h4>
+                        <p>Nhập địa chỉ email đã đăng kí với <span>sneaker luxury</span></p>
                         <div class="wsus__login">
                             <form method="POST" action="{{ route('password.email') }}">
                                 @csrf
                                 <div class="wsus__login_input">
                                     <i class="fal fa-envelope"></i>
-                                    <input id="email" type="email" name="email" value="{{old('email')}}" placeholder="Your Email">
+                                    <input id="email" type="email" name="email" value="{{old('email')}}" placeholder="email của bạn">
                                 </div>
 
-                                <button class="common_btn" type="submit">send</button>
+                                <button class="common_btn" type="submit">gửi</button>
                             </form>
                         </div>
-                        <a class="see_btn mt-4" href="{{route('login')}}">go to login</a>
+                        <a class="see_btn mt-4" href="{{route('login')}}">đi đến đăng nhập</a>
                     </div>
                 </div>
             </div>

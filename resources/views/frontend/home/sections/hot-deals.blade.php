@@ -6,10 +6,10 @@
                 <div class="col-xl-12">
                     <div class="wsus__section_header justify-content-start">
                         <div class="monthly_top_filter2 mb-1">
-                            <button class="active auto_click" data-filter=".new_arrival">New Arrival</button>
-                            <button data-filter=".featured_product">Featured</button>
-                            <button data-filter=".top_product">Top Product</button>
-                            <button data-filter=".best_product">Best Product</button>
+                            <button class="active auto_click" data-filter=".new_arrival">Hàng mới về</button>
+                            <button data-filter=".featured_product">Nổi bật</button>
+                            <button data-filter=".top_product">Sản phẩm hàng đầu</button>
+                            <button data-filter=".best_product">Sản phẩm tốt nhất</button>
 
                         </div>
                     </div>

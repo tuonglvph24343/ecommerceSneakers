@@ -17,7 +17,7 @@
             <div class="col-xl-5 col-md-6 col-lg-4 d-none d-lg-block">
                 <div class="wsus__search">
                     <form action="{{route('products.index')}}">
-                        <input type="text" placeholder="Search..." name="search" value="{{request()->search}}">
+                        <input type="text" placeholder="Tìm kiếm..." name="search" value="{{request()->search}}">
                         <button type="submit"><i class="far fa-search"></i></button>
                     </form>
                 </div>
@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="wsus__mini_cart">
-        <h4>shopping cart <span class="wsus_close_mini_cart"><i class="far fa-times"></i></span></h4>
+        <h4>Giỏ hàng<span class="wsus_close_mini_cart"><i class="far fa-times"></i></span></h4>
         <ul class="mini_cart_wrapper">
             @foreach (Cart::content() as $sidebarProduct)
                 <li id="mini_cart_{{$sidebarProduct->rowId}}">
@@ -63,21 +63,21 @@
                         <p>
                             {{$settings->currency_icon}}{{$sidebarProduct->price}}
                         </p>
-                        <small>Variants total: {{$settings->currency_icon}}{{$sidebarProduct->options->variants_total}}</small>
+                        <small>Tổng cộng: {{$settings->currency_icon}}{{$sidebarProduct->options->variants_total}}</small>
                         <br>
-                        <small>Qty: {{$sidebarProduct->qty}}</small>
+                        <small>Số lượng: {{$sidebarProduct->qty}}</small>
                     </div>
                 </li>
             @endforeach
             @if (Cart::content()->count() === 0)
-                <li class="text-center">Cart Is Empty!</li>
+                <li class="text-center">Giỏ hàng đang trống!</li>
             @endif
         </ul>
         <div class="mini_cart_actions {{Cart::content()->count() === 0 ? 'd-none': ''}}">
-            <h5>sub total <span id="mini_cart_subtotal">{{$settings->currency_icon}}{{getCartTotal()}}</span></h5>
+            <h5>tổng cộng <span id="mini_cart_subtotal">{{$settings->currency_icon}}{{getCartTotal()}}</span></h5>
             <div class="wsus__minicart_btn_area">
-                <a class="common_btn" href="{{route('cart-details')}}">view cart</a>
-                <a class="common_btn" href="{{route('user.checkout')}}">checkout</a>
+                <a class="common_btn" href="{{route('cart-details')}}">xem giỏ hàng</a>
+                <a class="common_btn" href="{{route('user.checkout')}}">kiểm tra</a>
             </div>
         </div>
     </div>

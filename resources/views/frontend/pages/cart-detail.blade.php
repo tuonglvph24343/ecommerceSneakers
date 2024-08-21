@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-{{$settings->site_name}} || Cart Details
+{{$settings->site_name}} || Chi tiết giỏ hàng
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>cart View</h4>
+                        <h4>xem giỏ hàng</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">peoduct</a></li>
-                            <li><a href="#">cart view</a></li>
+                            <li><a href="#">trang chủ</a></li>
+                            <li><a href="#">sản phẩm</a></li>
+                            <li><a href="#">xem giỏ hàng</a></li>
                         </ul>
                     </div>
                 </div>
@@ -42,29 +42,29 @@
                                 <tbody>
                                     <tr class="d-flex">
                                         <th class="wsus__pro_img">
-                                            product item
+                                            Mục sản phẩm
                                         </th>
 
                                         <th class="wsus__pro_name">
-                                            product details
+                                            Chi tiết sản phẩm
                                         </th>
 
                                         <th class="wsus__pro_tk">
-                                           unit price
+                                            Giá
                                         </th>
 
                                         <th class="wsus__pro_tk">
-                                            total
+                                            tổng
                                         </th>
 
                                         <th class="wsus__pro_select">
-                                            quantity
+                                            số lượng
                                         </th>
 
 
 
                                         <th class="wsus__pro_icon">
-                                            <a href="#" class="common_btn clear_cart">clear cart</a>
+                                            <a href="#" class="common_btn clear_cart">xoá giỏ hàng</a>
                                         </th>
                                     </tr>
                                     @foreach ($cartItems as $item)
@@ -119,18 +119,18 @@
                 </div>
                 <div class="col-xl-3">
                     <div class="wsus__cart_list_footer_button" id="sticky_sidebar">
-                        <h6>total cart</h6>
-                        <p>subtotal: <span id="sub_total">{{$settings->currency_icon}}{{getCartTotal()}}</span></p>
-                        <p>coupon(-): <span id="discount">{{$settings->currency_icon}}{{getCartDiscount()}}</span></p>
-                        <p class="total"><span>total:</span> <span id="cart_total">{{$settings->currency_icon}}{{getMainCartTotal()}}</span></p>
+                        <h6>tổng số giỏ hàng</h6>
+                        <p>tổng cộng: <span id="sub_total">{{$settings->currency_icon}}{{getCartTotal()}}</span></p>
+                        <p>phiếu giảm giá(-): <span id="discount">{{$settings->currency_icon}}{{getCartDiscount()}}</span></p>
+                        <p class="total"><span>tổng:</span> <span id="cart_total">{{$settings->currency_icon}}{{getMainCartTotal()}}</span></p>
 
                         <form id="coupon_form">
-                            <input type="text" placeholder="Coupon Code" name="coupon_code" value="{{session()->has('coupon') ? session()->get('coupon')['coupon_code'] : ''}}">
-                            <button type="submit" class="common_btn">apply</button>
+                            <input type="text" placeholder="phiếu giảm giá" name="coupon_code" value="{{session()->has('coupon') ? session()->get('coupon')['coupon_code'] : ''}}">
+                            <button type="submit" class="common_btn w-100">áp dụng</button>
                         </form>
-                        <a class="common_btn mt-4 w-100 text-center" href="{{route('user.checkout')}}">checkout</a>
+                        <a class="common_btn mt-4 w-100 text-center" href="{{route('user.checkout')}}">kiểm tra</a>
                         <a class="common_btn mt-1 w-100 text-center" href="{{route('home')}}"><i
-                                class="fab fa-shopify"></i> Keep Shopping</a>
+                                class="fab fa-shopify"></i> tiếp tục mua sắm</a>
                     </div>
                 </div>
             </div>

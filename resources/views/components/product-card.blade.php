@@ -33,7 +33,7 @@
                     @endif
                 @endfor
 
-                <span>({{$product->reviews_count}} review)</span>
+                <span>({{$product->reviews_count}} Đánh giá)</span>
             </p>
             <a class="wsus__pro_name" href="{{route('product-detail', $product->slug)}}">{{limitText($product->name, 52)}}</a>
             @if(checkDiscount($product))
@@ -55,7 +55,7 @@
                 @endif
                 @endforeach
                 <input class="" name="qty" type="hidden" min="1" max="100" value="1" />
-                <button class="add_cart" type="submit">add to cart</button>
+                <button class="add_cart" type="submit">Thêm vào giỏ hàng</button>
             </form>
         </div>
     </div>

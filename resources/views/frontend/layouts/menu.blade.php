@@ -44,12 +44,12 @@
                     </ul>
 
                     <ul class="wsus__menu_item">
-                        <li><a class="active" href="{{url('/')}}">home</a></li>
+                        <li><a class="active" href="{{url('/')}}">Trang chủ</a></li>
                         {{-- <li><a class="{{setActive(['vendor.index'])}}" href="{{route('vendor.index')}}">vendors</a></li> --}}
-                        <li><a class="{{setActive(['flash-sale'])}}" href="{{route('flash-sale')}}">flash Sale</a></li>
+                        <li><a class="{{setActive(['flash-sale'])}}" href="{{route('flash-sale')}}">sale nhanh</a></li>
                         {{-- <li><a class="{{setActive(['blog'])}}" href="{{route('blog')}}">blog</a></li> --}}
-                        <li><a class="{{setActive(['about'])}}" href="{{route('about')}}">about</a></li>
-                        <li><a class="{{setActive(['contact'])}}" href="{{route('contact')}}">contact</a></li>
+                        <li><a class="{{setActive(['about'])}}" href="{{route('about')}}">Về tôi</a></li>
+                        <li><a class="{{setActive(['contact'])}}" href="{{route('contact')}}">Liên hệ</a></li>
                         {{-- <li><a href="product_grid_view.html">shop <i class="fas fa-caret-down"></i></a>
                             <div class="wsus__mega_menu">
                                 <div class="row">
@@ -141,10 +141,10 @@
                         <li><a href="daily_deals.html">daily deals</a></li> --}}
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">
-                        <li><a href="{{route('product-traking.index')}}">track order</a></li>
+                        <li><a href="{{route('product-traking.index')}}">Theo dõi đơn hàng</a></li>
                         @if (auth()->check())
                         @if (auth()->user()->role === 'user')
-                        <li><a href="{{route('user.dashboard')}}">my account</a></li>
+                        <li><a href="{{route('user.dashboard')}}">Tài khoản của tôi</a></li>
                         @elseif (auth()->user()->role === 'vendor')
                         <li><a href="{{route('vendor.dashboard')}}">Vendor Dashboard</a></li>
                         @elseif (auth()->user()->role === 'admin')
@@ -153,7 +153,7 @@
                         @endif
                         @else
 
-                        <li><a href="{{route('login')}}">login</a></li>
+                        <li><a href="{{route('login')}}">Đăng nhập</a></li>
                         @endif
                     </ul>
                 </div>

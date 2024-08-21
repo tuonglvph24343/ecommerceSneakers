@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-{{$settings->site_name}} || About
+{{$settings->site_name}} || Liên hệ
 @endsection
 
 @section('content')
@@ -13,10 +13,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>contact us</h4>
+                        <h4>liên hệ với chúng tôi</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">contact us</a></li>
+                            <li><a href="#">trang chủ</a></li>
+                            <li><a href="#">liên hệ với chúng tôi</a></li>
                         </ul>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                             <div class="col-xl-12">
                                 <div class="wsus__contact_single">
                                     <i class="fal fa-envelope"></i>
-                                    <h5>mail address</h5>
+                                    <h5>địa chỉ email</h5>
                                     <a href="mailto:example@gmail.com">{{@$settings->contact_email}}</a>
                                     <span><i class="fal fa-envelope"></i></span>
                                 </div>
@@ -52,7 +52,7 @@
                             <div class="col-xl-12">
                                 <div class="wsus__contact_single">
                                     <i class="far fa-phone-alt"></i>
-                                    <h5>phone number</h5>
+                                    <h5>số điện thoại</h5>
                                     <a href="macallto:{{@$settings->contact_phone}}">{{@$settings->contact_phone}}</a>
                                     <span><i class="far fa-phone-alt"></i></span>
                                 </div>
@@ -63,7 +63,7 @@
                             <div class="col-xl-12">
                                 <div class="wsus__contact_single">
                                     <i class="fal fa-map-marker-alt"></i>
-                                    <h5>contact address</h5>
+                                    <h5>địa chỉ liên lạc</h5>
                                     <a href="javascript:;">{{@$settings->contact_address}}</a>
                                     <span><i class="fal fa-map-marker-alt"></i></span>
                                 </div>
@@ -73,12 +73,12 @@
                     </div>
                     <div class="col-xl-8">
                         <div class="wsus__contact_question">
-                            <h5>Send Us a Message</h5>
+                            <h5>Gửi tin nhắn cho chúng tôi</h5>
                             <form id="contact-form">
                                 <div class="row">
                                     <div class="col-xl-12">
                                         <div class="wsus__con_form_single">
-                                            <input type="text" placeholder="Your Name" name="name">
+                                            <input type="text" placeholder="Tên của bạn" name="name">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
@@ -89,14 +89,14 @@
 
                                     <div class="col-xl-12">
                                         <div class="wsus__con_form_single">
-                                            <input type="text" placeholder="Subject" name="subject">
+                                            <input type="text" placeholder="Chủ đề" name="subject">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="wsus__con_form_single">
                                             <textarea cols="3" rows="5" placeholder="Message" name="message"></textarea>
                                         </div>
-                                        <button type="submit" class="common_btn" id="form-submit">send now</button>
+                                        <button type="submit" class="common_btn" id="form-submit"> Gửi ngay</button>
                                     </div>
                                 </div>
                             </form>

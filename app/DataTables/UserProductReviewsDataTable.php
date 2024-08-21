@@ -32,9 +32,9 @@ class UserProductReviewsDataTable extends DataTable
             })
             ->addColumn('status', function($query){
                 if($query->status == 1){
-                    return "<span class='badge bg-success'>Approved</span>";
+                    return "<span class='badge bg-success'>Đã được phê duyệ</span>";
                 }else {
-                    return "<span class='badge bg-warning'>Pending</span>";
+                    return "<span class='badge bg-warning'>Đang chờ xử lý</span>";
                 }
             })
             ->rawColumns(['product', 'status'])
@@ -79,11 +79,11 @@ class UserProductReviewsDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('product'),
-            Column::make('user'),
-            Column::make('rating'),
-            Column::make('review'),
-            Column::make('status')
+            Column::make('product')->title('Sản phẩm'),
+            Column::make('user')->title('Người dùng'),
+            Column::make('rating')->title('Xếp hạng'),
+            Column::make('review')->title('Bình luận'),
+            Column::make('status')->title('Trạng thái')
 
 
         ];

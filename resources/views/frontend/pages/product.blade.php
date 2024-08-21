@@ -13,10 +13,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>products</h4>
+                        <h4>Sản phẩm</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">peoduct</a></li>
+                            <li><a href="#">trang chủ</a></li>
+                            <li><a href="#">sản phẩm</a></li>
                         </ul>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-xl-3 col-lg-4">
                     <div class="wsus__sidebar_filter ">
-                        <p>filter</p>
+                        <p>Lọc</p>
                         <span class="wsus__filter_icon">
                             <i class="far fa-minus" id="minus"></i>
                             <i class="far fa-plus" id="plus"></i>
@@ -57,7 +57,7 @@
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        All Categories
+                                       tất cả danh mục
                                     </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show"
@@ -77,7 +77,7 @@
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Price
+                                        Giá
                                     </button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse show"
@@ -91,7 +91,7 @@
                                                 @endif
                                                 @endforeach
                                                 <input type="hidden" id="slider_range" name="range" class="flat-slider" />
-                                                <button type="submit" class="common_btn">filter</button>
+                                                <button type="submit" class="common_btn">Lọc</button>
                                             </form>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseThree3" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        brand
+                                        Thương hiệu
                                     </button>
                                 </h2>
                                 <div id="collapseThree3" class="accordion-collapse collapse show"
@@ -184,7 +184,7 @@
                                                         @endif
                                                     @endfor
 
-                                                    <span>({{$product->reviews_count}} review)</span>
+                                                    <span>({{$product->reviews_count}} đánh giá)</span>
                                                 </p>
                                                 <a class="wsus__pro_name" href="{{route('product-detail', $product->slug)}}">{{limitText($product->name, 53)}}</a>
                                                 @if(checkDiscount($product))
@@ -206,7 +206,7 @@
                                                     @endif
                                                     @endforeach
                                                     <input class="" name="qty" type="hidden" min="1" max="100" value="1" />
-                                                    <button class="add_cart" type="submit">add to cart</button>
+                                                    <button class="add_cart" type="submit">Thêm vào giỏ hàng</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -253,7 +253,7 @@
                                                         @endif
                                                     @endfor
 
-                                                    <span>({{$product->reviews_count}} review)</span>
+                                                    <span>({{$product->reviews_count}} đánh giá)</span>
                                                 </p>
                                                 <a class="wsus__pro_name" href="{{route('product-detail', $product->slug)}}">{{$product->name}}</a>
 
@@ -280,7 +280,7 @@
                                                         @endif
                                                         @endforeach
                                                         <input class="" name="qty" type="hidden" min="1" max="100" value="1" />
-                                                        <button class="add_cart_two mr-2" type="submit">add to cart</button>
+                                                        <button class="add_cart_two mr-2" type="submit">Thêm vào giỏ hàng</button>
                                                     </form>
                                                     <li><a href="#"><i class="far fa-heart"></i></a></li>
                                                     {{-- <li><a href="#"><i class="far fa-random"></i></a> --}}
@@ -298,7 +298,7 @@
                     <div class="text-center mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <h2>Product not found!</h2>
+                                <h2>sản phẩm không có:(</h2>
                             </div>
                         </div>
                     </div>

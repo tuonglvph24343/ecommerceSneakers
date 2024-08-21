@@ -11,7 +11,7 @@
                                         <h3>{!! $slider->type !!}</h3>
                                         <h1>{!! $slider->title !!}</h1>
                                         <h6>start at {{$settings->currency_icon}}{{$slider->starting_price}}</h6>
-                                        <a class="common_btn" href="{{$slider->btn_url}}">shop now</a>
+                                        <a class="common_btn" href="{{$slider->btn_url}}">Mua sắm ngay</a>
                                     </div>
                                 </div>
                             </div>

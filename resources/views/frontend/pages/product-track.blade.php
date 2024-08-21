@@ -13,10 +13,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>order tracking</h4>
+                        <h4>Theo dõi đơn hàng</h4>
                         <ul>
-                            <li><a href="#">home</a></li>
-                            <li><a href="#">order tracking</a></li>
+                            <li><a href="#">Trang chủ</a></li>
+                            <li><a href="#">Theo dõi đơn hàng</a></li>
                         </ul>
                     </div>
                 </div>
@@ -39,13 +39,13 @@
 
                         <form class="tack_form" action="{{route('product-traking.index')}}" method="GET">
 
-                            <h4 class="text-center">order tracking</h4>
-                            <p class="text-center">tracking your order status</p>
+                            <h4 class="text-center">theo dõi đơn hàng</h4>
+                            <p class="text-center">theo dõi tình trạng đơn hàng của bạn!</p>
                             <div class="wsus__track_input">
-                                <label class="d-block mb-2">invoice id*</label>
+                                <label class="d-block mb-2">Mã hóa đơn*</label>
                                 <input type="text" placeholder="H25-21578455" name="tracker" value="{{@$order->invocie_id}}">
                             </div>
-                            <button type="submit" class="common_btn">track</button>
+                            <button type="submit" class="common_btn">theo dõi</button>
                         </form>
                     </div>
                 </div>
@@ -57,25 +57,25 @@
                                 <div class="row">
                                     <div class="col-xl-3 col-sm-6 col-lg-3">
                                         <div class="wsus__track_header_single">
-                                            <h5>Order Date </h5>
+                                            <h5>Ngày đặt hàng </h5>
                                             <p>{{date('d M Y', strtotime(@$order->created_at))}}</p>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-sm-6 col-lg-3">
                                         <div class="wsus__track_header_single">
-                                            <h5>shopping by:</h5>
+                                            <h5>Mua sắm bởi:</h5>
                                             <p>{{@$order->user->name}}</p>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-sm-6 col-lg-3">
                                         <div class="wsus__track_header_single">
-                                            <h5>status:</h5>
+                                            <h5>Trạng thái:</h5>
                                             <p>{{@$order->order_status}}</p>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-sm-6 col-lg-3">
                                         <div class="wsus__track_header_single border_none">
-                                            <h5>tracking:</h5>
+                                            <h5>Theo dõi :</h5>
                                             <p>{{@$order->invocie_id}}</p>
                                         </div>
                                     </div>
@@ -86,10 +86,10 @@
                     <div class="col-xl-12">
                         <ul class="progtrckr" data-progtrckr-steps="4">
 
-                            <li class="progtrckr_done icon_one check_mark">Pending</li>
+                            <li class="progtrckr_done icon_one check_mark">Đang chờ xử lý</li>
 
                             @if (@$order->order_status == 'canceled')
-                                <li class="icon_four red_mark">Order Canceled</li>
+                                <li class="icon_four red_mark">Đơn hàng đã hủy</li>
                             @else
                             <li class="progtrckr_done icon_two
                             @if (@$order->order_status == 'processed_and_ready_to_ship' ||
@@ -98,26 +98,26 @@
                                 @$order->order_status == 'out_for_delivery' ||
                                 @$order->order_status == 'delivered')
                             check_mark
-                            @endif">order Processing</li>
+                            @endif">Đang xử lý đơn hàng</li>
                             <li class="icon_three
                             @if (
                                 @$order->order_status == 'out_for_delivery' ||
                                 @$order->order_status == 'delivered')
                             check_mark
                             @endif
-                            ">on the way</li>
+                            ">Đang trên đường giao hàng</li>
                             <li class="icon_four
                             @if (
                                 @$order->order_status == 'delivered')
                             check_mark
                             @endif
-                            ">delivered</li>
+                            ">Đã giao hàng</li>
                             @endif
 
                         </ul>
                     </div>
                     <div class="col-xl-12">
-                        <a href="{{url('/')}}" class="common_btn"><i class="fas fa-chevron-left"></i> back to home</a>
+                        <a href="{{url('/')}}" class="common_btn"><i class="fas fa-chevron-left"></i> quay về trang chủ</a>
                     </div>
                 </div>
                 @endif

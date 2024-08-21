@@ -4,9 +4,9 @@
             <div class="col-xl-12">
                 <div class="offer_time" style="background: url({{asset('frontend/images/flash_sell_bg.jpg')}})">
                     <div class="wsus__flash_coundown">
-                        <span class=" end_text">Flash Sale</span>
+                        <span class=" end_text">Khuyến mãi nhanh</span>
                         <div class="simply-countdown simply-countdown-one"></div>
-                        <a class="common_btn" href="{{route('flash-sale')}}">see more <i class="fas fa-caret-right"></i></a>
+                        <a class="common_btn" href="{{route('flash-sale')}}">Xem thêm <i class="fas fa-caret-right"></i></a>
                     </div>
                 </div>
             </div>

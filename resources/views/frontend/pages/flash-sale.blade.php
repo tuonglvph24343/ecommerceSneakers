@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-{{$settings->site_name}} || Flash Sale
+{{$settings->site_name}} || Sale nhanh
 @endsection
 
 @section('content')
@@ -13,10 +13,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>Flash Sale</h4>
+                        <h4>Sale nhanh</h4>
                         <ul>
-                            <li><a href="{{url('/')}}">Home</a></li>
-                            <li><a href="javascript:;">Flash Sale</a></li>
+                            <li><a href="{{url('/')}}">Trang chủ</a></li>
+                            <li><a href="javascript:;">Sale nhanh</a></li>
                         </ul>
                     </div>
                 </div>
@@ -41,9 +41,9 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="wsus__section_header rounded-0">
-                            <h3>flash sell</h3>
+                            <h3>Sale nhanh</h3>
                             <div class="wsus__offer_countdown">
-                                <span class="end_text">ends time :</span>
+                                <span class="end_text">Thời gian kết thúc :</span>
                                 <div class="simply-countdown simply-countdown-one"></div>
                             </div>
                         </div>

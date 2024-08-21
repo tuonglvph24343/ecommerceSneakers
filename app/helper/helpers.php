@@ -40,17 +40,17 @@ function productType($type)
 {
     switch ($type) {
         case 'new_arrival':
-            return 'New';
+            return 'Mới';
             break;
         case 'featured_product':
-            return 'Featured';
+            return 'Nổi bật';
             break;
         case 'top_product':
-            return 'Top';
+            return 'hàng đầu';
             break;
 
         case 'best_product':
-            return 'Best';
+            return 'Tốt nhất';
             break;
 
         default:

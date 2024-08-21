@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
           <div class="dashboard_content mt-2 mt-md-0">
-            <h3><i class="fal fa-gift-card"></i>create address</h3>
+            <h3><i class="fal fa-gift-card"></i>Cập nhật địa chỉ</h3>
             <div class="wsus__dashboard_add wsus__add_address">
               <form action="{{route('user.address.update', $address->id)}}" method="POST">
                 @csrf
@@ -16,7 +16,7 @@
                 <div class="row">
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
-                      <label>name <b>*</b></label>
+                      <label>Tên <b>*</b></label>
                       <input type="text" placeholder="Name" name="name" value="{{$address->name}}">
                     </div>
                   </div>
@@ -28,13 +28,13 @@
                   </div>
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
-                      <label>phone <b>*</b></label>
+                      <label>số điện thoại <b>*</b></label>
                       <input type="text" placeholder="Phone" name="phone" value="{{$address->phone}}">
                     </div>
                   </div>
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
-                      <label>countery <b>*</b></label>
+                      <label>quốc gia <b>*</b></label>
                       <div class="wsus__topbar_select">
                         <select class="select_2" name="country">
                           <option>Select</option>
@@ -48,14 +48,14 @@
 
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
-                      <label>State <b>*</b></label>
+                      <label>trạng thái <b>*</b></label>
                       <input type="text" placeholder="State" name="state" value="{{$address->state}}">
                     </div>
                   </div>
 
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
-                      <label>City <b>*</b></label>
+                      <label>thành phố <b>*</b></label>
                       <input type="text" placeholder="City" name="city" value="{{$address->city}}">
                     </div>
                   </div>
@@ -63,21 +63,21 @@
 
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
-                      <label>zip code <b>*</b></label>
+                      <label>mã zip<b>*</b></label>
                       <input type="text" placeholder="Zip Code" name="zip" value="{{$address->zip}}">
                     </div>
                   </div>
 
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
-                      <label>Address <b>*</b></label>
+                      <label>địa chỉ <b>*</b></label>
                       <input type="text" placeholder="Address" name="address" value="{{$address->address}}">
                     </div>
                   </div>
 
 
                   <div class="col-xl-6">
-                    <button type="submit" class="common_btn">Update</button>
+                    <button type="submit" class="common_btn">cập nhật</button>
                   </div>
                 </div>
               </form>

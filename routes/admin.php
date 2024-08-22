@@ -35,6 +35,7 @@ use App\Http\Controllers\Backend\SubscribersController;
 use App\Http\Controllers\Backend\TermsAndConditionController;
 use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VendorListController;
+use App\Http\Controllers\Backend\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -94,7 +95,8 @@ Route::put('products-variant-item-update/{variantItemId}', [ProductVariantItemCo
 Route::delete('products-variant-item/{variantItemId}', [ProductVariantItemController::class, 'destroy'])->name('products-variant-item.destroy');
 
 Route::put('products-variant-item-status', [ProductVariantItemController::class, 'chageStatus'])->name('products-variant-item.chages-status');
-
+//test
+Route::get('warehouse', [WarehouseController::class, 'index'])->name('warehouse.index');
 /** reviews routes */
 Route::get('reviews', [AdminReviewController::class, 'index'])->name('reviews.index');
 Route::put('reviews/change-status', [AdminReviewController::class, 'changeStatus'])->name('reviews.change-status');

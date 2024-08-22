@@ -13,7 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ProductDataTable extends DataTable
+class WarehouseDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -40,6 +40,12 @@ class ProductDataTable extends DataTable
             })
             ->addColumn('image', function($query){
                 return "<img width='70px' src='".asset($query->thumb_image)."' ></img>";
+            })
+            ->addColumn('category', function($query){
+                return $query->category->name;
+            })
+            ->addColumn('vendor', function($query){
+                return $query->vendor->shop_name;
             })
             ->addColumn('type', function($query){
                 switch ($query->product_type) {
@@ -118,11 +124,15 @@ class ProductDataTable extends DataTable
         return [
 
             Column::make('id'),
-            Column::make('image')->title('Hình ảnh'),
             Column::make('name')->title('Tên'),
+            Column::make('slug')->title('Url'),
+            Column::make('vendor')->title('Nhà cung cấp'),
+            Column::make('category')->title('Danh mục'),
+            // Column::make('sub_category_id')->title('Danh mục phụ'),
             Column::make('price')->title('Giá sản phẩm'),
-            Column::make('type')->width(150)->title('kiểu'),
-            // Column::make('status')->title('trạng thái'),
+            Column::make('qty')->width(150)->title('số lượng'),
+            Column::make('status')->title('trạng thái'),
+            Column::make('sku')->title('mã đơn hàng'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

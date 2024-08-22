@@ -1580,7 +1580,7 @@ h6 .badge {
       left: 34px;
       content: '\f0d8';
       font-weight: 600;
-      font-family: 'Font Awesome 5 Free';
+      font-family: 'Roboto';
       color: #fff;
       font-size: 30px; }
     .navbar .form-inline .search-result .search-header {
@@ -1906,7 +1906,7 @@ a.dropdown-item {
 /* 4.1 Misc */
 /* nunito-regular - latin */
 @font-face {
-  font-family: 'Nunito';
+  font-family:"Roboto", sans-serif;
   font-style: normal;
   font-weight: 400;
   src: url("../fonts/nunito-v9-latin-regular.eot");
@@ -1915,7 +1915,7 @@ a.dropdown-item {
   /* Legacy iOS */ }
 /* nunito-600 - latin */
 @font-face {
-  font-family: 'Nunito';
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 600;
   src: url("../fonts/nunito-v9-latin-600.eot");
@@ -1924,7 +1924,7 @@ a.dropdown-item {
   /* Legacy iOS */ }
 /* nunito-700 - latin */
 @font-face {
-  font-family: 'Nunito';
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 700;
   src: url("../fonts/nunito-v9-latin-700.eot");
@@ -1933,7 +1933,7 @@ a.dropdown-item {
   /* Legacy iOS */ }
 /* nunito-800 - latin */
 @font-face {
-  font-family: 'Nunito';
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 800;
   src: url("../fonts/nunito-v9-latin-800.eot");
@@ -1955,7 +1955,7 @@ body {
   background-color: #fafdfb;
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Nunito', 'Segoe UI', arial;
+  font-family:"Roboto", sans-serif;
   color: #6c757d; }
 
 a.bb {
@@ -2067,7 +2067,7 @@ blockquote {
   background-color: #f9f9f9;
   border-radius: 3px;
   position: relative;
-  font-family: 'Time new Romans';
+  font-family: 'Roboto';
   font-size: 16px;
   letter-spacing: .3px; }
   blockquote:before {
@@ -2412,7 +2412,7 @@ body.sidebar-mini .main-sidebar {
         background-color: #fff; }
         body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li a.has-dropdown:after {
           content: "";
-          font-family: 'Font Awesome 5 Free';
+          font-family: "Roboto", sans-serif;
           font-weight: 900;
           position: absolute;
           top: 50%;
@@ -2510,7 +2510,7 @@ body.layout-3 .navbar.navbar-secondary {
       margin-right: 35px; }
       body.layout-3 .navbar.navbar-secondary .navbar-nav > .nav-item > .nav-link.has-dropdown:after {
         content: "";
-        font-family: 'Font Awesome 5 Free';
+        font-family: "Roboto", sans-serif;
         font-weight: 900;
         position: absolute;
         top: 50%;
@@ -2546,7 +2546,7 @@ body.layout-3 .navbar.navbar-secondary {
       padding-right: 20px !important; }
       body.layout-3 .navbar.navbar-secondary .navbar-nav > .nav-item .dropdown-menu .nav-item .nav-link.has-dropdown:after {
         content: "";
-        font-family: 'Font Awesome 5 Free';
+        font-family: "Roboto", sans-serif;
         font-weight: 900;
         position: absolute;
         top: 50%;

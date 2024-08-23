@@ -111,22 +111,22 @@ class SettingController extends Controller
 
 
     /** Pusher settings update */
-    function pusherSettingUpdate(Request $request) : RedirectResponse {
-        $validatedData = $request->validate([
-            'pusher_app_id' => ['required'],
-            'pusher_key' => ['required'],
-            'pusher_secret' => ['required'],
-            'pusher_cluster' => ['required'],
-        ]);
+    // function pusherSettingUpdate(Request $request) : RedirectResponse {
+    //     $validatedData = $request->validate([
+    //         'pusher_app_id' => ['required'],
+    //         'pusher_key' => ['required'],
+    //         'pusher_secret' => ['required'],
+    //         'pusher_cluster' => ['required'],
+    //     ]);
 
-        PusherSetting::updateOrCreate(
-            ['id' => 1],
-            $validatedData
-        );
+    //     PusherSetting::updateOrCreate(
+    //         ['id' => 1],
+    //         $validatedData
+    //     );
 
-        toastr('Updated successfully!', 'success', 'success');
-        return redirect()->back();
+    //     toastr('Updated successfully!', 'success', 'success');
+    //     return redirect()->back();
 
-    }
+    // }
 }
 

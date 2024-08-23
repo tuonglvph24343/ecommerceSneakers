@@ -1,6 +1,8 @@
 @php
     $categoryProductSliderSectionTwo = json_decode($categoryProductSliderSectionTwo->value);
     $lastKey = [];
+    $urlParam = ''; // Khởi tạo biến $urlParam
+
 
     foreach($categoryProductSliderSectionTwo as $key => $category){
         if($category === null ){
@@ -19,7 +21,7 @@
         $products = \App\Models\Product::withAvg('reviews', 'rating')->withCount('reviews')
         ->with(['variants', 'category', 'productImageGalleries'])
         ->where('sub_category_id', $category->id)->orderBy('id', 'DESC')->take(12)->get();
-
+        $urlParam = 'subcategory'; // Đặt giá trị 'subcategory' cho $urlParam
     }else {
         $category = \App\Models\ChildCategory::find($lastKey['child_category']);
         $products = \App\Models\Product::withAvg('reviews', 'rating')->withCount('reviews')
@@ -33,7 +35,7 @@
             <div class="col-xl-12">
                 <div class="wsus__section_header">
                     <h3>{{$category->name}}</h3>
-                    <a class="see_btn" href="{{route('products.index', ['category' => $category->slug])}}">Xem thêm <i class="fas fa-caret-right"></i></a>
+                    <a class="see_btn" href="{{route('products.index', [$urlParam => $category->slug])}}">Xem thêm <i class="fas fa-caret-right"></i></a>
                 </div>
             </div>
         </div>

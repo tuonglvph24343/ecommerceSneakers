@@ -1,22 +1,20 @@
 @extends('frontend.layouts.master')
 
-@section('title')
-{{$settings->site_name}} || Payment
-@endsection
+@section('title', $settings->site_name . ' || Payment')
 
 @section('content')
     <!--============================
         BREADCRUMB START
     ==============================-->
-    <section id="wsus__breadcrumb">
+    <section id="wsus__breadcrumb" class="wsus__breadcrumb_section">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h4>payment</h4>
-                        <ul>
-                            <li><a href="{{route('home')}}">home</a></li>
-                            <li><a href="javascript:;">payment</a></li>
+                        <h4>Payment</h4>
+                        <ul class="breadcrumb_list">
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><span>Payment</span></li>
                         </ul>
                     </div>
                 </div>
@@ -27,15 +25,18 @@
         BREADCRUMB END
     ==============================-->
 
-
     <!--============================
         PAYMENT PAGE START
     ==============================-->
-    <section id="wsus__cart_view">
+    <section id="wsus__cart_view" class="wsus__payment_section">
         <div class="container">
             <div class="wsus__pay_info_area">
                 <div class="row">
-                    <h1>Paymet success!</h1>
+                    <div class="col-12 text-center">
+                        <h1>Thanh toán thành công</h1>
+                        <p>Thanh toán của bạn đã được xử lý thành công.Cảm ơn bạn đã mua hàng.</p>
+                        <a href="{{ route('home') }}" class="common_btn">Quay lại trang chủ</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,3 +45,4 @@
         PAYMENT PAGE END
     ==============================-->
 @endsection
+

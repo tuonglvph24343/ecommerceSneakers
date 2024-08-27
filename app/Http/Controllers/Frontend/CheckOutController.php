@@ -48,6 +48,35 @@ class CheckOutController extends Controller
         return redirect()->back();
 
     }
+    public function updateAddress(Request $request, string $id)
+    {
+        $request->validate([
+            'name' => ['required', 'max:200'],
+            'email' => ['required', 'max:200', 'email'],
+            'phone' => ['required', 'max:200'],
+            'country' => ['required', 'max:200'],
+            'state' => ['required', 'max:200'],
+            'city' => ['required', 'max:200'],
+            'zip' => ['required', 'max:200'],
+            'address' => ['required'],
+        ]);
+
+        $address = UserAddress::findOrFail($id);
+        $address->user_id = Auth::user()->id;
+        $address->name = $request->name;
+        $address->email = $request->email;
+        $address->phone = $request->phone;
+        $address->country = $request->country;
+        $address->state = $request->state;
+        $address->city = $request->city;
+        $address->zip = $request->zip;
+        $address->address = $request->address;
+        $address->save();
+
+        toastr('Updated Successfully!', 'success', 'Success');
+
+        return redirect()->back();
+    }
 
     public function checkOutFormSubmit(Request $request)
     {

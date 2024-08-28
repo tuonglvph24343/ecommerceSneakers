@@ -122,8 +122,8 @@
                         <a class="nav-link common_btn text-center" href="{{ route('user.paypal.payment') }}"
                             id="submitCheckoutOnline">Thanh toán online</a>
                         <br>
-                        <a class="nav-link common_btn text-center" href="{{ route('user.cod.payment') }}"
-                            id="submitCheckoutCOD">Thanh toán khi nhận hàng</a>
+                        <!-- <a class="nav-link common_btn text-center" href="{{ route('user.cod.payment') }}"
+                            id="submitCheckoutCOD">Thanh toán khi nhận hàng</a> -->
                     </div>
                 </div>
             </div>

@@ -34,8 +34,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // Thêm logic khôi phục giỏ hàng tại đây
-        // $cartController = new CartController();
-        // $cartController->restoreCartOnLogin();
+        $cartController = new CartController();
+        $cartController->restoreCartOnLogin();
 
         if($request->user()->status === 'inactive'){
             Auth::guard('web')->logout();
@@ -59,8 +59,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         // Thêm logic lưu giỏ hàng trước khi đăng xuất
-        // $cartController = new CartController();
-        // $cartController->storeCartOnLogout();
+        $cartController = new CartController();
+        $cartController->storeCartOnLogout();
 
         Auth::guard('web')->logout();
 

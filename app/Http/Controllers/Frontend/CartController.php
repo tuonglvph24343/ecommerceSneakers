@@ -231,19 +231,19 @@ class CartController extends Controller
     }
 
     /** Store the cart when logging out */
-    // public function storeCartOnLogout()
-    // {
-    //     if (Auth::check()) {
-    //         Cart::store(Auth::user()->id);
-    //     }
-    // }
+    public function storeCartOnLogout()
+    {
+        if (Auth::check()) {
+            Cart::store(Auth::user()->id);
+        }
+    }
 
     // /** Restore the cart when logging in */
-    // public function restoreCartOnLogin()
-    // {
-    //     if (Auth::check()) {
-    //         Cart::restore(Auth::user()->id);
-    //     }
-    // }
+    public function restoreCartOnLogin()
+    {
+        if (Auth::check()) {
+            Cart::restore(Auth::user()->id);
+        }
+    }
 
 }

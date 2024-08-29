@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -32,6 +33,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Thêm logic khôi phục giỏ hàng tại đây
+        // $cartController = new CartController();
+        // $cartController->restoreCartOnLogin();
+
         if($request->user()->status === 'inactive'){
             Auth::guard('web')->logout();
             $request->session()->regenerateToken();
@@ -53,6 +58,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Thêm logic lưu giỏ hàng trước khi đăng xuất
+        // $cartController = new CartController();
+        // $cartController->storeCartOnLogout();
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

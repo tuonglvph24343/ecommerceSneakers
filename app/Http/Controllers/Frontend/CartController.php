@@ -26,13 +26,18 @@ class CartController extends Controller
             toastr('Please add some products in your cart for view the cart page', 'warning', 'Cart is empty!');
             return redirect()->route('home');
         }
-        // Cập nhật giá trong giỏ hàng nếu giá sản phẩm đã thay đổi
+        // Duyệt qua tất cả các sản phẩm trong giỏ hàng
         // foreach ($cartItems as $item) {
         //     $product = Product::find($item->id);
-        //     if ($product) {
+
+        //     // Nếu sản phẩm không tồn tại, xóa khỏi giỏ hàng
+        //     if (!$product) {
+        //         Cart::remove($item->rowId);
+        //         toastr("Product '{$item->name}' has been removed from your cart as it is no longer available.", 'warning', 'Product Removed');
+        //     } else {
+        //         // Nếu sản phẩm tồn tại, cập nhật giá (nếu cần)
         //         $currentPrice = checkDiscount($product) ? $product->offer_price : $product->price;
 
-        //         // Kiểm tra nếu giá hiện tại khác với giá trong giỏ hàng
         //         if ($item->price != $currentPrice) {
         //             Cart::update($item->rowId, [
         //                 'price' => $currentPrice
@@ -40,7 +45,7 @@ class CartController extends Controller
         //         }
         //     }
         // }
-        // $cartItems = Cart::content();
+        $cartItems = Cart::content();
         $cartpage_banner_section = Advertisement::where('key', 'cartpage_banner_section')->first();
         $cartpage_banner_section = json_decode($cartpage_banner_section?->value);
 

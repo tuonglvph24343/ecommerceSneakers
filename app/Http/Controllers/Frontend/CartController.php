@@ -27,24 +27,24 @@ class CartController extends Controller
             return redirect()->route('home');
         }
         // Duyệt qua tất cả các sản phẩm trong giỏ hàng
-        // foreach ($cartItems as $item) {
-        //     $product = Product::find($item->id);
+        foreach ($cartItems as $item) {
+            $product = Product::find($item->id);
 
-        //     // Nếu sản phẩm không tồn tại, xóa khỏi giỏ hàng
-        //     if (!$product) {
-        //         Cart::remove($item->rowId);
-        //         toastr("Product '{$item->name}' has been removed from your cart as it is no longer available.", 'warning', 'Product Removed');
-        //     } else {
-        //         // Nếu sản phẩm tồn tại, cập nhật giá (nếu cần)
-        //         $currentPrice = checkDiscount($product) ? $product->offer_price : $product->price;
+            // Nếu sản phẩm không tồn tại, xóa khỏi giỏ hàng
+            if (!$product) {
+                Cart::remove($item->rowId);
+                toastr("Product '{$item->name}' has been removed from your cart as it is no longer available.", 'warning', 'Product Removed');
+            } else {
+                // Nếu sản phẩm tồn tại, cập nhật giá (nếu cần)
+                $currentPrice = checkDiscount($product) ? $product->offer_price : $product->price;
 
-        //         if ($item->price != $currentPrice) {
-        //             Cart::update($item->rowId, [
-        //                 'price' => $currentPrice
-        //             ]);
-        //         }
-        //     }
-        // }
+                if ($item->price != $currentPrice) {
+                    Cart::update($item->rowId, [
+                        'price' => $currentPrice
+                    ]);
+                }
+            }
+        }
         $cartItems = Cart::content();
         $cartpage_banner_section = Advertisement::where('key', 'cartpage_banner_section')->first();
         $cartpage_banner_section = json_decode($cartpage_banner_section?->value);

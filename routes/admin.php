@@ -35,6 +35,7 @@ use App\Http\Controllers\Backend\SubscribersController;
 use App\Http\Controllers\Backend\TermsAndConditionController;
 use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VendorListController;
+use App\Http\Controllers\Backend\VnpaySettingController;
 use App\Http\Controllers\Backend\WarehouseController;
 use Illuminate\Support\Facades\Route;
 
@@ -205,3 +206,4 @@ Route::resource('paypal-setting', PaypalSettingController::class);
 // Route::put('stripe-setting/{id}', [StripeSettingController::class, 'update'])->name('stripe-setting.update');
 Route::put('razorpay-setting/{id}', [RazorpaySettingController::class, 'update'])->name('razorpay-setting.update');
 Route::put('cod-setting/{id}', [CodSettingController::class, 'update'])->name('cod-setting.update');
+Route::put('vnpay-setting/{id}', [VnpaySettingController::class, 'update'])->name('vnpay-setting.update');

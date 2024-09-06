@@ -35,7 +35,7 @@ class ProductDataTable extends DataTable
                   <a class="dropdown-item has-icon" href="'.route('admin.products-variant.index', ['product' => $query->id]).'"><i class="far fa-file"></i> Các biến thể</a>
                 </div>
               </div>';
-
+    
                 return $editBtn.$deleteBtn.$moreBtn;
             })
             ->addColumn('image', function($query){
@@ -52,11 +52,11 @@ class ProductDataTable extends DataTable
                     case 'top_product':
                         return '<i class="badge badge-info">Sản phẩm hàng đầu </i>';
                         break;
-
+    
                     case 'best_product':
                         return '<i class="badge badge-danger">Sản phẩm tốt nhất</i>';
                         break;
-
+    
                     default:
                         return '<i class="badge badge-dark">None</i>';
                         break;
@@ -76,9 +76,14 @@ class ProductDataTable extends DataTable
                 }
                 return $button;
             })
+            ->addColumn('price', function($query) {
+                // Format price with thousand separators
+                return number_format($query->price, 0, ',', '.');
+            })
             ->rawColumns(['image', 'type', 'status', 'action'])
             ->setRowId('id');
     }
+    
 
     /**
      * Get the query source of dataTable.

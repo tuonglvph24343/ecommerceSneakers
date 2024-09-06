@@ -82,6 +82,10 @@ class WarehouseDataTable extends DataTable
                 }
                 return $button;
             })
+            ->addColumn('price', function($query) {
+                // Format price with thousand separators
+                return number_format($query->price, 0, ',', '.');
+            })
             ->rawColumns(['image', 'type', 'status', 'action'])
             ->setRowId('id');
     }

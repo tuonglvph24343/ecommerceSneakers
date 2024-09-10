@@ -19,4 +19,17 @@ class UserOrderController extends Controller
         $order = Order::findOrFail($id);
         return view('frontend.dashboard.order.show', compact('order'));
     }
+    public function cancelOrder(Request $request)
+    {
+        $order = Order::find($request->id);
+
+        if ($order && $order->order_status !== 'canceled' && $order->order_status !== 'delivered'&& $order->order_status !== 'dropped_off' && $order->order_status !== 'shipped' && $order->order_status !== 'out_for_delivery') {
+            $order->order_status = 'canceled';
+            $order->save();
+
+            return response()->json(['status' => 'success', 'message' => 'Đơn hàng đã được hủy thành công!']);
+        }
+
+        return response()->json(['status' => 'error', 'message' => 'Có lỗi xảy ra, vui lòng thử lại!'], 400);
+    }
 }

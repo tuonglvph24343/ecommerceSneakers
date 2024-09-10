@@ -61,6 +61,61 @@ p {
 /*======================
 	COMMON CSS START
 ========================*/
+.wsus__pro_select .product_qty_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.wsus__pro_select .product-decrement,
+.wsus__pro_select .product-increment {
+  border-radius: 50%;
+  /* Làm cho nút tròn */
+  padding: 5px 15px;
+  /* Điều chỉnh kích thước cho nút tròn hơn */
+  border: none;
+  /* Loại bỏ viền */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Thêm chút bóng đổ */
+  cursor: pointer;
+  /* Thêm con trỏ dạng tay khi hover */
+  transition: background-color 0.3s ease;
+  /* Hiệu ứng chuyển màu mượt mà khi hover */
+}
+
+.wsus__pro_select .product-decrement:hover,
+.wsus__pro_select .product-increment:hover {
+  background-color: #d9534f;
+  /* Thay đổi màu nền khi hover */
+}
+
+.wsus__pro_select .product-increment {
+  background-color: #5cb85c;
+  /* Màu nền cho nút tăng */
+}
+
+.wsus__pro_select .product-decrement {
+  background-color: #d9534f;
+  /* Màu nền cho nút giảm */
+}
+
+.wsus__pro_select .product-qty {
+  border-radius: 20px;
+  /* Làm tròn ô nhập liệu */
+  padding: 8px;
+  /* Thêm khoảng đệm trong ô nhập liệu */
+  border: 1px solid #ccc;
+  /* Viền nhẹ cho ô nhập liệu */
+  width: 110px;
+  /* Tăng chiều rộng cho ô nhập liệu */
+  text-align: center;
+  /* Canh giữa văn bản */
+  margin: 0 5px;
+  /* Khoảng cách giữa các phần tử */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Thêm bóng đổ */
+  background-color: #f9f9f9;
+  /* Màu nền nhẹ nhàng */
+}
 .common_btn {
   font-size: 14px;
   text-transform: capitalize;

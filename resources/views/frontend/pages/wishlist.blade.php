@@ -79,7 +79,7 @@
 
                                         <td class="wsus__pro_tk" style="width:238px">
                                             <h6>
-                                                {{$settings->currency_icon}}{{$item->product->price}}
+                                                {{ number_format($item->product->price, 0, ',', '.') }}{{$settings->currency_icon}}
                                             </h6>
                                         </td>
 

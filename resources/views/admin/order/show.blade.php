@@ -174,6 +174,14 @@
                 let status = $(this).val();
                 let id = $(this).data('id');
 
+                // Check if the current order status is 'delivered' or 'canceled'
+                let currentStatus = "{{$order->order_status}}";
+                if (currentStatus === 'delivered' || currentStatus === 'canceled') {
+                    toastr.warning('Trạng thái đơn hàng đã giao hoặc đã hủy không thể thay đổi.');
+                    $(this).val(currentStatus); // Reset to the original status
+                    return;
+                }
+
                 $.ajax({
                     method: 'GET',
                     url: "{{route('admin.order.status')}}",
@@ -222,3 +230,4 @@
         })
     </script>
 @endpush
+

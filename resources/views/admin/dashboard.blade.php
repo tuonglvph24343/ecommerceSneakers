@@ -7,6 +7,59 @@
         </div>
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a href="">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-danger">
+                            <i class="fas fa-money-bill-alt"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Doanh thu hôm nay</h4>
+                            </div>
+                            <div class="card-body">
+                                {{ number_format($todaysEarnings, 0, ',', '.') }} {{ $settings->currency_icon }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a href="">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-danger">
+                            <i class="fas fa-money-bill-alt"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4> Doanh thu tháng này</h4>
+                            </div>
+                            <div class="card-body">
+                                {{ number_format($monthEarnings, 0, ',', '.') }} {{ $settings->currency_icon }}
+                            </div>
+                        </div>
+                        
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a href="">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-info">
+                            <i class="fas fa-money-bill-alt"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Doanh thu năm nay</h4>
+                            </div>
+                            <div class="card-body">
+                                {{ number_format($yearEarnings, 0, ',', '.') }} {{ $settings->currency_icon }}
+                            </div>
+                        </div>
+                        
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <a href="{{ route('admin.order.index') }}">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-primary">
@@ -112,59 +165,11 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-danger">
-                            <i class="fas fa-money-bill-alt"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Doanh thu hôm nay</h4>
-                            </div>
-                            <div class="card-body">
-                                {{$settings->currency_icon}}{{ $todaysEarnings }}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+       
 
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-danger">
-                            <i class="fas fa-money-bill-alt"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4> Doanh thu tháng này</h4>
-                            </div>
-                            <div class="card-body">
-                                {{$settings->currency_icon}}{{ $monthEarnings }}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+        
 
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon bg-info">
-                            <i class="fas fa-money-bill-alt"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>Doanh thu năm nay</h4>
-                            </div>
-                            <div class="card-body">
-                                {{$settings->currency_icon}}{{ $yearEarnings }}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+       
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                 <a href="{{route('admin.reviews.index')}}">
@@ -221,7 +226,7 @@
                 </a>
             </div>
 
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                <a href="">
                 <div class="card card-statistic-1">
                     <div class="card-icon bg-warning">
@@ -232,12 +237,12 @@
                             <h4>Tổng số bài viết blog</h4>
                         </div>
                         <div class="card-body">
-                            {{-- {{$totalBlogs}} --}}
+                            {{$totalBlogs}}
                         </div>
                     </div>
                 </div>
             </a>
-            </div>
+            </div> --}}
 
             
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">

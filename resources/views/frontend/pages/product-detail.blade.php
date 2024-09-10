@@ -6,8 +6,8 @@
 
 @section('content')
     <!--============================
-                BREADCRUMB START
-            ==============================-->
+                    BREADCRUMB START
+                ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -25,13 +25,13 @@
         </div>
     </section>
     <!--============================
-                BREADCRUMB END
-            ==============================-->
+                    BREADCRUMB END
+                ==============================-->
 
 
     <!--============================
-                PRODUCT DETAILS START
-            ==============================-->
+                    PRODUCT DETAILS START
+                ==============================-->
     <section id="wsus__product_details">
         <div class="container">
             <div class="wsus__details_bg">
@@ -76,11 +76,12 @@
                                     sản phẩm)</p>
                             @endif
                             @if (checkDiscount($product))
-                                <h4>{{ $settings->currency_icon }}{{ $product->offer_price }}
-                                    <del>{{ $settings->currency_icon }}{{ $product->price }}</del>
+                                <h4>
+                                    {{ number_format($product->offer_price, 0, ',', '.') }}{{ $settings->currency_icon }}
+                                    <del>{{ number_format($product->price, 0, ',', '.') }}{{ $settings->currency_icon }}</del>
                                 </h4>
                             @else
-                                <h4>{{ $settings->currency_icon }}{{ $product->price }}</h4>
+                                <h4>{{ number_format($product->price, 0, ',', '.') }}{{ $settings->currency_icon }}</h4>
                             @endif
                             <p class="wsus__pro_rating">
                                 @php
@@ -113,7 +114,7 @@
                                                             @if ($variantItem->status != 0)
                                                                 <option value="{{ $variantItem->id }}"
                                                                     {{ $variantItem->is_default == 1 ? 'selected' : '' }}>
-                                                                    {{ $variantItem->name }} (${{ $variantItem->price }})
+                                                                    {{ $variantItem->name }} ({{ $variantItem->price }}đ)
                                                                 </option>
                                                             @endif
                                                         @endforeach
@@ -135,7 +136,8 @@
                                 </div>
 
                                 <ul class="wsus__button_area">
-                                    <li><button type="submit" class="add_cart" href="#">thêm vào giỏ hàng</button></li>
+                                    <li><button type="submit" class="add_cart" href="#">thêm vào giỏ hàng</button>
+                                    </li>
 
 
                                     <li><a style="border: 1px solid gray;
@@ -182,7 +184,8 @@
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-contact" type="button" role="tab"
-                                        aria-controls="pills-contact" aria-selected="false">thông tin nhà cung cấp</button>
+                                        aria-controls="pills-contact" aria-selected="false">thông tin nhà cung
+                                        cấp</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-contact-tab2" data-bs-toggle="pill"
@@ -356,7 +359,8 @@
                                                                     <input type="hidden" name="vendor_id" id=""
                                                                         value="{{ $product->vendor_id }}">
 
-                                                                    <button class="common_btn" type="submit">Gửi đánh giá</button>
+                                                                    <button class="common_btn" type="submit">Gửi đánh
+                                                                        giá</button>
                                                                 </form>
                                                             </div>
                                                         @endif
@@ -377,8 +381,8 @@
         </div>
     </section>
     <!--============================
-                PRODUCT DETAILS END
-            ==============================-->
+                    PRODUCT DETAILS END
+                ==============================-->
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -416,7 +420,7 @@
 
                 $.ajax({
                     method: 'POST',
-                  
+
                     data: formData,
                     beforeSend: function() {
                         let html =
@@ -429,7 +433,7 @@
                     },
                     success: function(response) {
                         $('.message-box').val('');
-                      
+
                         toastr.success(response.message);
                     },
                     error: function(xhr, status, error) {

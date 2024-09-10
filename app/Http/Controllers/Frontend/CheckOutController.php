@@ -80,26 +80,25 @@ class CheckOutController extends Controller
 
     public function checkOutFormSubmit(Request $request)
     {
-       $request->validate([
-        'shipping_method_id' => ['required', 'integer'],
-        'shipping_address_id' => ['required', 'integer'],
-       ]);
-
-       $shippingMethod = ShippingRule::findOrFail($request->shipping_method_id);
-       if($shippingMethod){
-           Session::put('shipping_method', [
+        $request->validate([
+            'shipping_method_id' => ['required', 'integer'],
+            'shipping_address_id' => ['required', 'integer'],
+        ]);
+    
+        $shippingMethod = ShippingRule::findOrFail($request->shipping_method_id);
+        if($shippingMethod){
+            Session::put('shipping_method', [
                 'id' => $shippingMethod->id,
                 'name' => $shippingMethod->name,
                 'type' => $shippingMethod->type,
                 'cost' => $shippingMethod->cost
-           ]);
-       }
-       $address = UserAddress::findOrFail($request->shipping_address_id)->toArray();
-       if($address){
-           Session::put('address', $address);
-       }
-
-       return response(['status' => 'success', 'redirect_url' => route('user.payment')]);
-       
+            ]);
+        }
+        $address = UserAddress::findOrFail($request->shipping_address_id)->toArray();
+        if($address){
+            Session::put('address', $address);
+        }
+    
+        return response(['status' => 'success', 'redirect_url' => route('user.payment')]);
     }
 }

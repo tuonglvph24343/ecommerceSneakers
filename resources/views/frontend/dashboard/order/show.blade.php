@@ -1,9 +1,3 @@
-@php
-    $address = json_decode($order->order_address);
-    $shipping = json_decode($order->shpping_method);
-    $coupon = json_decode($order->coupon);
-@endphp
-
 @extends('frontend.dashboard.layouts.master')
 
 @section('title')
@@ -11,9 +5,12 @@
 @endsection
 
 @section('content')
-    <!--=============================
-        DASHBOARD START
-      ==============================-->
+    @php
+        // Kiểm tra và giải mã JSON, nếu không có dữ liệu, tạo đối tượng trống
+        $address = $order->order_address ? json_decode($order->order_address) : (object) [];
+        $shipping = $order->shpping_method ? json_decode($order->shpping_method) : (object) [];
+        $coupon = $order->coupon ? json_decode($order->coupon) : (object) [];
+    @endphp
     <section id="wsus__dashboard">
         <div class="container-fluid">
             @include('frontend.dashboard.layouts.sidebar')
@@ -24,9 +21,6 @@
                         <h3><i class="far fa-user"></i> Chi tiết đơn hàng</h3>
                         <div class="wsus__dashboard_profile">
 
-                            <!--============================
-                            INVOICE PAGE START
-                        ==============================-->
                             <section id="" class="invoice-print">
                                 <div class="">
                                     <div class="wsus__invoice_area">
@@ -62,7 +56,15 @@
                                                                 {{ config('order_status.order_status_admin')[$order->order_status]['status'] }}
                                                             </h6>
                                                             <p>Phương thức thanh toán: {{ $order->payment_method }}</p>
-                                                            <p>Trạng thái thanh toán: {{ $order->payment_status }}</p>
+                                                            <p>Trạng thái thanh toán: 
+                                                                @if($order->payment_status === 0)
+                                                                    Đang chờ xử lý
+                                                                @elseif($order->payment_status === 1)
+                                                                    Đã hoàn thành
+                                                                @else
+                                                                    Không xác định
+                                                                @endif
+                                                            </p>
                                                             <p>Mã giao dịch id: {{ $order->transaction->transaction_id }}
                                                             </p>
                                                         </div>
@@ -79,11 +81,9 @@
                                                             <th class="amount">
                                                                 Nhà cung cấp
                                                             </th>
-
                                                             <th class="amount">
                                                                 Giá
                                                             </th>
-
                                                             <th class="quentity">
                                                                 Số lượng
                                                             </th>
@@ -92,86 +92,106 @@
                                                             </th>
                                                         </tr>
                                                         @foreach ($order->orderProducts as $product)
-                                                                @php
-                                                                    $variants = json_decode($product->variants);
-                                                                @endphp
-                                                                <tr>
-                                                                    <td class="name">
-                                                                        <p>{{ $product->product_name }}</p>
-                                                                        @foreach ($variants as $key => $item)
-                                                                            <span>{{ $key }} :
-                                                                                {{ $item->name }}(
-                                                                                {{ $settings->currency_icon }}{{ $item->price }}
-                                                                                )</span>
-                                                                        @endforeach
-                                                                    </td>
-                                                                    <td class="amount">
-                                                                        {{ $product->vendor->shop_name }}
-                                                                    </td>
-                                                                    <td class="amount">
-                                                                        {{ $settings->currency_icon }}
-                                                                        {{ $product->unit_price }}
-                                                                    </td>
-
-                                                                    <td class="quentity">
-                                                                        {{ $product->qty }}
-                                                                    </td>
-                                                                    <td class="total">
-                                                                        {{ $settings->currency_icon }}
-                                                                        {{ $product->unit_price * $product->qty }}
-                                                                    </td>
-                                                                </tr>
-
+                                                            @php
+                                                                $variants = json_decode($product->variants);
+                                                                $productUrl = route(
+                                                                    'product-detail',
+                                                                    $product->product->slug,
+                                                                );
+                                                            @endphp
+                                                            <tr>
+                                                                <td class="name">
+                                                                    <p><a
+                                                                            href="{{ $productUrl }}">{{ $product->product_name }}</a>
+                                                                    </p>
+                                                                    @foreach ($variants as $key => $item)
+                                                                        <span>{{ $key }} : {{ $item->name }}
+                                                                            ({{ number_format($item->price, 0, ',', '.') }}{{ $settings->currency_icon }})</span>
+                                                                    @endforeach
+                                                                </td>
+                                                                <td class="amount">{{ $product->vendor->shop_name }}</td>
+                                                                <td class="amount">
+                                                                   {{ number_format($product->unit_price, 0, ',', '.') }} {{ $settings->currency_icon }}
+                                                                </td>
+                                                                <td class="quentity">{{ $product->qty }}</td>
+                                                                <td class="total">
+                                                                 {{ number_format($product->unit_price * $product->qty, 0, ',', '.') }} {{ $settings->currency_icon }}
+                                                                </td>
+                                                            </tr>
                                                         @endforeach
-
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="wsus__invoice_footer">
-
-                                            <p><span>Tổng :</span> {{ @$settings->currency_icon }} {{@$order->sub_total}}</p>
-                                            <p><span>Chi phí vận chuyển(+):</span>{{ @$settings->currency_icon }} {{@$shipping->cost}} </p>
-                                            <p><span>Phiếu giảm giá(-):</span>{{ @$settings->currency_icon }} {{@$coupon->discount ? $coupon->discount : 0}}</p>
-                                            <p><span>Tổng giá :</span>{{ @$settings->currency_icon }} {{@$order->amount}}</p>
-
+                                            <p><span>Tổng :</span>
+                                                {{ number_format(@$order->sub_total, 0, ',', '.') }}{{ @$settings->currency_icon }}
+                                            </p>
+                                            <p><span>Chi phí vận chuyển(+):</span>
+                                              {{ number_format(@$shipping->cost, 0, ',', '.') }}  {{ @$settings->currency_icon }}
+                                            </p>
+                                            <p><span>Phiếu giảm giá(-):</span>
+                                               {{ number_format(@$coupon->discount ? $coupon->discount : 0, 0, ',', '.') }} {{ @$settings->currency_icon }}
+                                            </p>
+                                            <p><span>Tổng giá :</span>
+                                                {{ number_format(@$order->amount, 0, ',', '.') }}{{ @$settings->currency_icon }}
+                                            </p>
 
                                         </div>
                                     </div>
                                 </div>
                             </section>
-                            <!--============================
-                            INVOICE PAGE END
-                        ==============================-->
-                        {{-- <div class="col">
-                            <div class="mt-2 float-end">
-                                <button class="btn btn-warning print_invoice">print</button>
-                            </div>
-                        </div> --}}
-                        </div>
 
+                            <!-- Nút hủy đơn hàng -->
+                            <div class="mt-3 text-center">
+                                @if (
+                                    $order->order_status !== 'canceled' &&
+                                        $order->order_status !== 'delivered' &&
+                                        $order->order_status !== 'dropped_off' &&
+                                        $order->order_status !== 'shipped' &&
+                                        $order->order_status !== 'out_for_delivery')
+                                    <button id="cancel_order" class="btn btn-danger">Hủy đơn hàng</button>
+                                @endif
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--=============================
-        DASHBOARD START
-      ==============================-->
 @endsection
 
 @push('scripts')
     <script>
-        $('.print_invoice').on('click', function() {
-            let printBody = $('.invoice-print');
-            let originalContents = $('body').html();
+        $(document).ready(function() {
+            $('#cancel_order').on('click', function() {
+                if (confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?')) {
+                    let orderId = "{{ $order->id }}";
 
-            $('body').html(printBody.html());
-
-            window.print();
-
-            $('body').html(originalContents);
-
-        })
+                    $.ajax({
+                        url: "{{ route('user.order.cancel') }}", // Sử dụng route Laravel
+                        method: 'POST',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id: orderId,
+                            status: 'canceled' // Chuyển trạng thái đơn hàng thành 'canceled'
+                        },
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                alert(response.message);
+                                location.reload(); // Tải lại trang để cập nhật giao diện
+                            } else {
+                                alert(response.message);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(xhr.responseText); // Kiểm tra lỗi từ server
+                            alert('Có lỗi xảy ra, vui lòng thử lại!');
+                        }
+                    });
+                }
+            });
+        });
     </script>
 @endpush

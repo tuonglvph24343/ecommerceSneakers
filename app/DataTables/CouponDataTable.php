@@ -30,8 +30,10 @@ class CouponDataTable extends DataTable
                 return $editBtn.$deleteBtn;
             })
             ->addColumn('discount', function($query){
-                return GeneralSetting::first()->currency_icon.$query->discount;
+                return number_format($query->discount, 0, ',', '.') . ' ' . GeneralSetting::first()->currency_icon;
             })
+            
+            
             ->addColumn('status', function($query){
                 if($query->status == 1){
                     $button = '<label class="custom-switch mt-2">

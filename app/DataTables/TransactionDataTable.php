@@ -27,11 +27,12 @@ class TransactionDataTable extends DataTable
                 return '#'.$query->order->invocie_id;
             })
             ->addColumn('amount_in_base_currency', function($query){
-                return $query->amount.' '.$query->order->currency_name;
+                return number_format($query->amount, 0, ',', '.') . ' ' . $query->order->currency_name;
             })
             ->addColumn('amount_in_real_currency', function($query){
-                return $query->amount_real_currency.' '.$query->amount_real_currency_name;
+                return number_format($query->amount_real_currency, 0, ',', '.') . ' ' . $query->amount_real_currency_name;
             })
+            
             ->filterColumn('invoice_id', function($query, $keyword){
                 $query->whereHas('order', function($query) use ($keyword){
                     $query->where('invocie_id', 'like', "%$keyword%");

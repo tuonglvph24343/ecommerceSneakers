@@ -32,7 +32,7 @@ class UserProductReviewsDataTable extends DataTable
             })
             ->addColumn('status', function($query){
                 if($query->status == 1){
-                    return "<span class='badge bg-success'>Đã được phê duyệ</span>";
+                    return "<span class='badge bg-success'>Đã được phê duyệt</span>";
                 }else {
                     return "<span class='badge bg-warning'>Đang chờ xử lý</span>";
                 }

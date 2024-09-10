@@ -59,14 +59,15 @@ class ShippingRuleDataTable extends DataTable
             })
             ->addColumn('min_cost', function($query){
                 if($query->type === 'min_cost'){
-                    return $this->currencyIcon.$query->min_cost;
-                }else {
-                    return $this->currencyIcon.'0';
+                    return number_format($query->min_cost, 0, ',', '.') . ' ' . $this->currencyIcon;
+                } else {
+                    return '0 ' . $this->currencyIcon;
                 }
             })
             ->addColumn('cost', function($query){
-                return $this->currencyIcon.$query->cost;
+                return number_format($query->cost, 0, ',', '.') . ' ' . $this->currencyIcon;
             })
+            
             ->rawColumns(['status', 'action', 'type'])
             ->setRowId('id');
     }

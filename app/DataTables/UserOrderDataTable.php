@@ -74,6 +74,10 @@ class UserOrderDataTable extends DataTable
                 }
 
             })
+            ->addColumn('amount', function($query) {
+                // Format price with thousand separators
+                return number_format($query->amount, 0, ',', '.');
+            })
             ->rawColumns(['order_status', 'action', 'payment_status'])
             ->setRowId('id');
     }
@@ -118,8 +122,8 @@ class UserOrderDataTable extends DataTable
             Column::make('invocie_id')->title('Mã hóa đơn'),
             Column::make('customer')->title('Tên'),
             Column::make('date')->title('Ngày'),
-            Column::make('product_qty')->title('Số lượng sản phẩm'),
-            Column::make('amount')->title('Giá'),
+            Column::make('product_qty')->title('Số lượng'),
+            Column::make('amount')->title('Tổng tiền'),
             Column::make('order_status')->title('Trạng thái đơn hàng'),
             Column::make('payment_status')->title('Trạng thái thanh toán'),
 

@@ -15,4 +15,5 @@ class FlashSaleController extends Controller
         $flashSaleItems = FlashSaleItem::where('status', 1)->orderBy('id', 'ASC')->pluck('product_id')->toArray();
         return view('frontend.pages.flash-sale', compact('flashSaleDate', 'flashSaleItems'));
     }
+    //làm lại hiển thị flash sale cho chuẩn
 }

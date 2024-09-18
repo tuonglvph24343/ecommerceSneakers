@@ -56,8 +56,8 @@
                                                                 {{ config('order_status.order_status_admin')[$order->order_status]['status'] }}
                                                             </h6>
                                                             <p>Phương thức thanh toán: {{ $order->payment_method }}</p>
-                                                            <p>Trạng thái thanh toán: 
-                                                                @if($order->payment_status === 0)
+                                                            <p>Trạng thái thanh toán:
+                                                                @if ($order->payment_status === 0)
                                                                     Đang chờ xử lý
                                                                 @elseif($order->payment_status === 1)
                                                                     Đã hoàn thành
@@ -78,9 +78,10 @@
                                                             <th class="name">
                                                                 Sản phẩm
                                                             </th>
-                                                            <th class="amount">
-                                                                Nhà cung cấp
+                                                            <th class="wsus__pro_img">
+                                                                Hình ảnh
                                                             </th>
+
                                                             <th class="amount">
                                                                 Giá
                                                             </th>
@@ -89,6 +90,9 @@
                                                             </th>
                                                             <th class="total">
                                                                 Tổng
+                                                            </th>
+                                                            <th class="amount">
+                                                                Đánh giá
                                                             </th>
                                                         </tr>
                                                         @foreach ($order->orderProducts as $product)
@@ -106,17 +110,26 @@
                                                                     </p>
                                                                     @foreach ($variants as $key => $item)
                                                                         <span>{{ $key }} : {{ $item->name }}
-                                                                            ({{ number_format($item->price, 0, ',', '.') }}{{ $settings->currency_icon }})</span>
+                                                                            ({{ number_format($item->price, 0, ',', '.') }}{{ $settings->currency_icon }})
+                                                                        </span>
                                                                     @endforeach
                                                                 </td>
-                                                                <td class="amount">{{ $product->vendor->shop_name }}</td>
+                                                                <td class="wsus__pro_img"><img
+                                                                        src="{{ asset($product->product->thumb_image) }}"
+                                                                        alt="product" class="img-fluid w-100">
+                                                                </td>
+
                                                                 <td class="amount">
-                                                                   {{ number_format($product->unit_price, 0, ',', '.') }} {{ $settings->currency_icon }}
+                                                                    {{ number_format($product->unit_price, 0, ',', '.') }}
+                                                                    {{ $settings->currency_icon }}
                                                                 </td>
                                                                 <td class="quentity">{{ $product->qty }}</td>
                                                                 <td class="total">
-                                                                 {{ number_format($product->unit_price * $product->qty, 0, ',', '.') }} {{ $settings->currency_icon }}
+                                                                    {{ number_format($product->unit_price * $product->qty, 0, ',', '.') }}
+                                                                    {{ $settings->currency_icon }}
                                                                 </td>
+                                                                <td class="amount"><a href="{{ $productUrl }}"><button
+                                                                            class="nav-link">Đánh giá </button></a></td>
                                                             </tr>
                                                         @endforeach
                                                     </table>
@@ -128,10 +141,12 @@
                                                 {{ number_format(@$order->sub_total, 0, ',', '.') }}{{ @$settings->currency_icon }}
                                             </p>
                                             <p><span>Chi phí vận chuyển(+):</span>
-                                              {{ number_format(@$shipping->cost, 0, ',', '.') }}  {{ @$settings->currency_icon }}
+                                                {{ number_format(@$shipping->cost, 0, ',', '.') }}
+                                                {{ @$settings->currency_icon }}
                                             </p>
                                             <p><span>Phiếu giảm giá(-):</span>
-                                               {{ number_format(@$coupon->discount ? $coupon->discount : 0, 0, ',', '.') }} {{ @$settings->currency_icon }}
+                                                {{ number_format(@$coupon->discount ? $coupon->discount : 0, 0, ',', '.') }}
+                                                {{ @$settings->currency_icon }}
                                             </p>
                                             <p><span>Tổng giá :</span>
                                                 {{ number_format(@$order->amount, 0, ',', '.') }}{{ @$settings->currency_icon }}

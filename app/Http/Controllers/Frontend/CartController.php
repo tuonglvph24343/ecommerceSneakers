@@ -23,7 +23,7 @@ class CartController extends Controller
 
         if (count($cartItems) === 0) {
             Session::forget('coupon');
-            toastr('Please add some products in your cart for view the cart page', 'warning', 'Cart is empty!');
+            toastr('Vui lòng thêm một số sản phẩm vào giỏ hàng của bạn để xem trang giỏ hàng', 'warning', 'Giỏ hàng trống!');
             return redirect()->route('home');
         }
         // Duyệt qua tất cả các sản phẩm trong giỏ hàng
@@ -33,7 +33,7 @@ class CartController extends Controller
             // Nếu sản phẩm không tồn tại, xóa khỏi giỏ hàng
             if (!$product) {
                 Cart::remove($item->rowId);
-                toastr("Product '{$item->name}' has been removed from your cart as it is no longer available.", 'warning', 'Product Removed');
+                toastr("Sản phẩm  '{$item->name}'  đã được xóa khỏi giỏ hàng của bạn vì nó không còn khả dụng", 'warning', ' Sản phẩm đã bị xóa.');
             } else {
                 // Nếu sản phẩm tồn tại, cập nhật giá (nếu cần)
                 $currentPrice = checkDiscount($product) ? $product->offer_price : $product->price;
@@ -60,9 +60,9 @@ class CartController extends Controller
 
         // check product quantity
         if ($product->qty === 0) {
-            return response(['status' => 'error', 'message' => 'Product stock out']);
+            return response(['status' => 'error', 'message' => 'Sản phẩm hết hàng']);
         } elseif ($product->qty < $request->qty) {
-            return response(['status' => 'error', 'message' => 'Quantity not available in our stock']);
+            return response(['status' => 'error', 'message' => 'Số lượng không có sẵn trong kho của chúng tôi.']);
         }
 
         $variants = [];
@@ -100,27 +100,33 @@ class CartController extends Controller
 
         Cart::add($cartData);
 
-        return response(['status' => 'success', 'message' => 'Added to cart successfully!']);
+        return response(['status' => 'success', 'message' => 'Added to cart successfully!SSS']);
     }
 
     /** Update product quantity */
     public function updateProductQty(Request $request)
-    {
-        $productId = Cart::get($request->rowId)->id;
-        $product = Product::findOrFail($productId);
+{
+    $productId = Cart::get($request->rowId)->id;
+    $product = Product::findOrFail($productId);
 
-        // check product quantity
-        if ($product->qty === 0) {
-            return response(['status' => 'error', 'message' => 'Product stock out']);
-        } elseif ($product->qty < $request->qty) {
-            return response(['status' => 'error', 'message' => 'Quantity not available in our stock']);
-        }
-
-        Cart::update($request->rowId, $request->quantity);
-        $productTotal = $this->getProductTotal($request->rowId);
-
-        return response(['status' => 'success', 'message' => 'Product Quantity Updated!', 'product_total' => $productTotal]);
+    // check product quantity
+    if ($product->qty === 0) {
+        return response(['status' => 'error', 'message' => 'Sản phẩm hết hàng']);
+    } elseif ($product->qty < $request->qty) {
+        return response(['status' => 'error', 'message' => 'Số lượng không có sẵn trong kho của chúng tôi.']);
     }
+
+    // Cập nhật số lượng trong giỏ hàng
+    Cart::update($request->rowId, $request->qty);  // Sử dụng 'qty' để cập nhật chính xác
+    $productTotal = $this->getProductTotal($request->rowId);
+
+    // Phản hồi về thành công và cập nhật tổng tiền cho sản phẩm
+    return response([
+        'status' => 'success', 
+        'message' => 'Product Quantity Updated!', 
+        'product_total' => $productTotal
+    ]);
+}
 
     /** get product total */
     public function getProductTotal($rowId)
@@ -193,7 +199,7 @@ class CartController extends Controller
         } elseif ($coupon->end_date < date('Y-m-d')) {
             return response(['status' => 'error', 'message' => 'Coupon is expired']);
         } elseif ($coupon->total_used >= $coupon->quantity) {
-            return response(['status' => 'error', 'message' => 'you can not apply this coupon']);
+            return response(['status' => 'error', 'message' => 'bạn không thể áp dụng phiếu giảm giá này']);
         }
 
         if ($coupon->discount_type === 'amount') {

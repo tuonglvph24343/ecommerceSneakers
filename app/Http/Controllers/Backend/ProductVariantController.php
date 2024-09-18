@@ -95,7 +95,7 @@ class ProductVariantController extends Controller
         $varinat = ProductVariant::findOrFail($id);
         $variantItemCheck = ProductVariantItem::where('product_variant_id', $varinat->id)->count();
         if($variantItemCheck > 0){
-            return response(['status' => 'error', 'message' => 'This variant contain variant items in it delete the variant items first for delete this variant!']);
+            return response(['status' => 'error', 'message' => 'Biến thể này chứa các mục biến thể bên trong, hãy xóa các mục biến thể trước khi xóa biến thể này!']);
         }
         $varinat->delete();
 

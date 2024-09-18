@@ -24,19 +24,13 @@ class WarehouseDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('admin.products.edit', $query->id)."' class='btn btn-primary'><i class='far fa-edit'></i></a>";
                 $deleteBtn = "<a href='".route('admin.products.destroy', $query->id)."' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
                 $moreBtn = '<div class="dropdown dropleft d-inline">
-                <button class="btn btn-primary dropdown-toggle ml-1" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-cog"></i>
-                </button>
-                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-                  <a class="dropdown-item has-icon" href="'.route('admin.products-image-gallery.index', ['product' => $query->id]).'"><i class="far fa-heart"></i> Thư viện ảnh</a>
-                  <a class="dropdown-item has-icon" href="'.route('admin.products-variant.index', ['product' => $query->id]).'"><i class="far fa-file"></i> Các biến thể</a>
-                </div>
+          
+              
               </div>';
 
-                return $editBtn.$deleteBtn.$moreBtn;
+                return $deleteBtn.$moreBtn;
             })
             ->addColumn('image', function($query){
                 return "<img width='70px' src='".asset($query->thumb_image)."' ></img>";
@@ -129,14 +123,14 @@ class WarehouseDataTable extends DataTable
 
             Column::make('id'),
             Column::make('name')->title('Tên'),
-            Column::make('slug')->title('Url'),
+            // Column::make('slug')->title('Url'),
             Column::make('vendor')->title('Nhà cung cấp'),
             Column::make('category')->title('Danh mục'),
             // Column::make('sub_category_id')->title('Danh mục phụ'),
             Column::make('price')->title('Giá sản phẩm'),
             Column::make('qty')->width(150)->title('số lượng'),
             Column::make('status')->title('trạng thái'),
-            Column::make('sku')->title('mã đơn hàng'),
+            // Column::make('sku')->title('mã đơn hàng'),
             Column::computed('action')
             ->exportable(false)
             ->printable(false)

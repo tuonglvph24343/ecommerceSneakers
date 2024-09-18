@@ -29,12 +29,12 @@ class WishlistController extends Controller
     public function addToWishlist(Request $request)
     {
         if (!Auth::check()) {
-            return response(['status' => 'error', 'message' => 'login before add a product into wishlist!']);
+            return response(['status' => 'error', 'message' => 'đăng nhập trước khi thêm sản phẩm vào yêu thích!']);
         }
 
         $wishlistCount = Wishlist::where(['product_id' => $request->id, 'user_id' => Auth::user()->id])->count();
         if ($wishlistCount > 0) {
-            return response(['status' => 'error', 'message' => 'The product is already at wishlist!']);
+            return response(['status' => 'error', 'message' => 'Sản phẩm đã có trong yêu thích!']);
         }
 
         $wishlist = new Wishlist();
@@ -44,7 +44,7 @@ class WishlistController extends Controller
 
         $count = Wishlist::where('user_id', Auth::user()->id)->count();
 
-        return response(['status' => 'success', 'message' => 'Product added into the wishlist!', 'count' => $count]);
+        return response(['status' => 'success', 'message' => 'Sản phẩm đã được thêm vào yêu thích!', 'count' => $count]);
     }
 
     public function destory(string $id)
@@ -54,7 +54,7 @@ class WishlistController extends Controller
 
         if (!$wishlistProduct->product) {
             $wishlistProduct->delete();
-            toastr('Product was removed from wishlist because it no longer exists.', 'warning', 'Product Removed');
+            toastr('Sản phẩm đã bị xóa khỏi danh sách yêu thích vì không còn tồn tại nữa.', 'warning', 'Product Removed');
             return redirect()->back();
         }
 

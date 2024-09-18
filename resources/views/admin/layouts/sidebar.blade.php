@@ -18,7 +18,7 @@
             <li
                 class="dropdown {{ setActive(['admin.category.*', 'admin.sub-category.*', 'admin.child-category.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-list"></i>
-                    <span>Quản lí doanh mục </span></a>
+                    <span>Quản lí danh mục </span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.category.*']) }}"><a class="nav-link"
                             href="{{ route('admin.category.index') }}">Danh mục</a></li>
@@ -132,8 +132,8 @@
                             href="{{ route('admin.coupons.index') }}">Phiếu giảm giá</a></li>
                     <li class="{{ setActive(['admin.shipping-rule.*']) }}"><a class="nav-link"
                             href="{{ route('admin.shipping-rule.index') }}">Quy định vận chuyển</a></li>
-                    <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link"
-                            href="{{ route('admin.vendor-profile.index') }}">Hồ sơ nhà cung cấp</a></li>
+                    {{-- <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.vendor-profile.index') }}">Hồ sơ nhà cung cấp</a></li> --}}
                     <li class="{{ setActive(['admin.payment-settings.*']) }}"><a class="nav-link"
                             href="{{ route('admin.payment-settings.index') }}">Cài đặt thanh toán</a></li>
 
@@ -252,8 +252,8 @@
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.customer.index']) }}"><a class="nav-link"
                             href="{{ route('admin.customer.index') }}">Danh sách khách hàng</a></li>
-                    <li class="{{ setActive(['admin.vendor-list.index']) }}"><a class="nav-link"
-                            href="{{ route('admin.vendor-list.index') }}">Danh sách nhà cung cấp</a></li>
+                    {{-- <li class="{{ setActive(['admin.vendor-list.index']) }}"><a class="nav-link"
+                            href="{{ route('admin.vendor-list.index') }}">Danh sách nhà cung cấp</a></li> --}}
                     {{-- 
                     <li class="{{ setActive(['admin.vendor-requests.index']) }}"><a class="nav-link"
                             href="{{ route('admin.vendor-requests.index') }}">Pending vendors</a></li> --}}

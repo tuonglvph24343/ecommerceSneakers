@@ -20,6 +20,6 @@ class AdminReviewController extends Controller
         $review->status = $request->status == 'true' ? 1 : 0;
         $review->save();
 
-        return response(['message' => 'Status has been updated!']);
+        return response(['message' => 'Trạng thái đã được cập nhật!']);
     }
 }

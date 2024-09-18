@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Mail\Contact;
 use App\Models\About;
+use App\Models\Coupon;
 use App\Models\EmailConfiguration;
 use App\Models\TermsAndCondition;
 use Illuminate\Http\Request;
@@ -42,5 +43,11 @@ class PageController extends Controller
         return response(['status' => 'success', 'message' => 'Mail sent successfully!']);
 
     }
+    public function voucher()
+    {
+        $voucher = Coupon::first();
+        return view('frontend.pages.voucher', compact('voucher'));
+    }
+
     
 }

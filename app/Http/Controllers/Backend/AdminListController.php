@@ -32,7 +32,7 @@ class AdminListController extends Controller
         $products = Product::where('vendor_id', $admin->vendor->id)->get();
 
         if(count($products) > 0){
-            return response(['status' => 'error', 'message' => 'Admin can\'t be deleted please ban the user insted of delete!']);
+            return response(['status' => 'error', 'message' => 'Không thể xóa quản trị viên, vui lòng cấm người dùng thay vì xóa!']);
         }
 
         Vendor::where('user_id', $admin->id)->delete();

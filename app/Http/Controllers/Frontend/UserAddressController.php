@@ -36,9 +36,9 @@ class UserAddressController extends Controller
             'email' => ['required', 'max:200', 'email'],
             'phone' => ['required', 'max:200'],
             'country' => ['required', 'max:200'],
-            'state' => ['required', 'max:200'],
+            'state' => ['nullable', 'max:200'],
             'city' => ['required', 'max:200'],
-            'zip' => ['required', 'max:200'],
+            'zip' => ['nullable', 'max:200'],
             'address' => ['required'],
         ]);
 
@@ -87,9 +87,9 @@ class UserAddressController extends Controller
             'email' => ['required', 'max:200', 'email'],
             'phone' => ['required', 'max:200'],
             'country' => ['required', 'max:200'],
-            'state' => ['required', 'max:200'],
+            'state' => ['nullable', 'max:200'],
             'city' => ['required', 'max:200'],
-            'zip' => ['required', 'max:200'],
+            'zip' => ['nullable', 'max:200'],
             'address' => ['required'],
         ]);
 

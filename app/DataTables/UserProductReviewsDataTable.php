@@ -30,6 +30,9 @@ class UserProductReviewsDataTable extends DataTable
             ->addColumn('user', function($query){
                 return $query->user->name;
             })
+            ->addColumn('image', function($query){
+                return "<img width='70px' src='".asset($query->product->thumb_image)."' ></img>";
+            })
             ->addColumn('status', function($query){
                 if($query->status == 1){
                     return "<span class='badge bg-success'>Đã được phê duyệt</span>";
@@ -37,7 +40,7 @@ class UserProductReviewsDataTable extends DataTable
                     return "<span class='badge bg-warning'>Đang chờ xử lý</span>";
                 }
             })
-            ->rawColumns(['product', 'status'])
+            ->rawColumns(['product', 'status','image'])
             ->setRowId('id');
     }
 
@@ -80,6 +83,7 @@ class UserProductReviewsDataTable extends DataTable
 
             Column::make('id'),
             Column::make('product')->title('Sản phẩm'),
+            Column::make('image')->title('hình ảnh'),
             Column::make('user')->title('Người dùng'),
             Column::make('rating')->title('Xếp hạng'),
             Column::make('review')->title('Bình luận'),

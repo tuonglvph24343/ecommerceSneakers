@@ -41,7 +41,7 @@ class FlashSaleController extends Controller
             'show_at_home' => ['required'],
             'status' => ['required'],
         ],[
-            'product.unique' => 'The product is already in flash sale!'
+            'product.unique' => 'Sản phẩm hiện đang được bán với giá ưu đãi!'
         ]);
 
 

@@ -22,19 +22,19 @@
                     <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label>Hình ảnh </label>
+                            <label>Hình ảnh <b>*</b> </label>
                             <input type="file" class="form-control" name="image">
                         </div>
 
                         <div class="form-group">
-                            <label>Tên</label>
+                            <label>Tên <b>*</b></label>
                             <input type="text" class="form-control" name="name" value="{{old('name')}}">
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="inputState">Danh mục</label>
+                                    <label for="inputState">Danh mục <b>*</b></label>
                                     <select id="inputState" class="form-control main-category" name="category">
                                       <option value="">Select</option>
                                       @foreach ($categories as $category)
@@ -45,26 +45,26 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="inputState">Danh mục phụ</label>
+                                    <label for="inputState">Danh mục phụ <b>*</b></label>
                                     <select id="inputState" class="form-control sub-category" name="sub_category">
                                         <option value="">Select</option>
 
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="inputState">Danh mục con</label>
-                                    <select id="inputState" class="form-control child-category" name="child_category">
-                                        <option value="">Select</option>
-                                    </select>
-                                </div>
-                            </div>
+                                {{-- <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="inputState">Danh mục con</label>
+                                        <select id="inputState" class="form-control child-category" name="child_category">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div> --}}
 
                         </div>
 
                         <div class="form-group">
-                            <label for="inputState">Hãng</label>
+                            <label for="inputState">Hãng <b>*</b></label>
                             <select id="inputState" class="form-control" name="brand">
                                 <option value="">Select</option>
                                 @foreach ($brands as $brand)
@@ -79,7 +79,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Giá</label>
+                            <label>Giá <b>*</b></label>
                             <input type="text" class="form-control" name="price" value="{{old('price')}}">
                         </div>
 
@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Số lượng kho hàng</label>
+                            <label>Số lượng kho hàng <b>*</b></label>
                             <input type="number" min="0" class="form-control" name="qty" value="{{old('qty')}}">
                         </div>
 
@@ -115,18 +115,18 @@
 
 
                         <div class="form-group">
-                            <label>Mô tả ngắn</label>
+                            <label>Mô tả ngắn <b>*</b></label>
                             <textarea name="short_description" class="form-control"></textarea>
                         </div>
 
 
                         <div class="form-group">
-                            <label>Mô tả dài</label>
+                            <label>Mô tả dài <b>*</b></label>
                             <textarea name="long_description" class="form-control summernote"></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputState">Kiểu sản phẩm</label>
+                            <label for="inputState">Kiểu sản phẩm <b>*</b></label>
                             <select id="inputState" class="form-control" name="product_type">
                                 <option value="">Select</option>
                                 <option value="new_arrival">Hàng mới</option>

@@ -59,7 +59,7 @@
                                             <li><span>Email :</span> {{ $address->email }}</li>
                                             <li><span>quốc gia :</span> {{ $address->country }}</li>
                                             <li><span>thanh phố :</span> {{ $address->city }}</li>
-                                            <li><span>mã zip :</span> {{ $address->zip }}</li>
+                                            {{-- <li><span>mã zip :</span> {{ $address->zip }}</li> --}}
                                             <li><span>địa chỉ :</span> {{ $address->address }}</li>
                                         </ul>
                                         <a href="javascript:;" class="common_btn center btn-small" data-bs-toggle="modal"
@@ -212,12 +212,12 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="wsus__check_single_form">
                                             <input type="text" placeholder="trạng thái *" name="state"
                                                 value="{{ old('state') }}">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-6">
                                         <div class="wsus__check_single_form">
                                             <input type="text" placeholder="thị trấn / thành phố *" name="city"
@@ -225,12 +225,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="wsus__check_single_form">
                                             <input type="text" placeholder="mã zip *" name="zip"
                                                 value="{{ old('zip') }}">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-12">
                                         <div class="wsus__check_single_form">
@@ -300,12 +300,12 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="wsus__check_single_form">
                                             <input type="text" placeholder="trạng thái *" name="state"
                                                 value="{{ isset($address) ? $address->state : '' }}">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-6">
                                         <div class="wsus__check_single_form">
                                             <input type="text" placeholder="thị trấn / thành phố *" name="city"
@@ -313,12 +313,12 @@
                                         </div>
                                     </div>
                         
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="wsus__check_single_form">
                                             <input type="text" placeholder="mã zip *" name="zip"
                                                 value="{{ isset($address) ? $address->zip : '' }}">
                                         </div>
-                                    </div>
+                                    </div> --}}
                         
                                     <div class="col-md-12">
                                         <div class="wsus__check_single_form">
@@ -453,10 +453,10 @@ document.querySelectorAll('.shipping_method').forEach(function(element) {
         }
 
         // Cập nhật phí vận chuyển
-        document.getElementById('shipping_fee').innerHTML = '{{ $settings->currency_icon }}&nbsp;' + formatCurrency(shippingCost);
+        document.getElementById('shipping_fee').innerHTML =   formatCurrency(shippingCost) + '{{ $settings->currency_icon }}&nbsp;';
 
         // Cập nhật tổng số tiền
-        document.getElementById('total_amount').innerHTML = '{{ $settings->currency_icon }}&nbsp;' + formatCurrency(totalAmount);
+        document.getElementById('total_amount').innerHTML =   formatCurrency(totalAmount) +'{{ $settings->currency_icon }}&nbsp;' ;
     });
 });
 

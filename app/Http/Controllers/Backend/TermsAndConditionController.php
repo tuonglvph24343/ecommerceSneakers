@@ -23,7 +23,7 @@ class TermsAndConditionController extends Controller
         TermsAndCondition::updateOrCreate(
             ['id' => 1],
             [
-                'content' => $request->content
+                'content' => $request->getContent()
             ]
         );
 

@@ -35,7 +35,7 @@
                     <div class="col-12 text-center">
                         <h1>Thanh toán thành công</h1>
                         <p>Thanh toán của bạn đã được xử lý thành công.Cảm ơn bạn đã mua hàng.</p>
-                        <a href="{{ route('user.orders.index') }}" class="common_btn">Xem đơn hàng</a>
+                        <a href="{{url('/')}}" class="common_btn">Trang chủ</a>
                     </div>
                 </div>
             </div>

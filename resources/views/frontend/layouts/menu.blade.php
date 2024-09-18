@@ -70,7 +70,7 @@
                             @endif
                         </li>
                         @endforeach
-                        <li><a class="{{setActive(['flash-sale'])}}" href="{{route('flash-sale')}}">sale</a></li>
+                        <li><a class="{{setActive(['flash-sale'])}}" href="{{route('voucher')}}">Mã giảm giá</a></li>
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">
                         <li><a class="{{setActive(['contact'])}}" href="{{route('contact')}}">Liên hệ</a></li>

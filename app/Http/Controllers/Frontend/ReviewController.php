@@ -30,7 +30,7 @@ class ReviewController extends Controller
 
         $checkReviewExist = ProductReview::where(['product_id' => $request->product_id, 'user_id' => Auth::user()->id])->first();
         if($checkReviewExist){
-            toastr('You already added a review for this product!', 'error', 'error');
+            toastr('Bạn đã thêm đánh giá cho sản phẩm này!', 'error', 'error');
             return redirect()->back();
         }
 

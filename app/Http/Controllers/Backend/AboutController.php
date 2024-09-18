@@ -23,7 +23,7 @@ class AboutController extends Controller
         About::updateOrCreate(
             ['id' => 1],
             [
-                'content' => $request->content
+                'content' => $request->getContent()
             ]
         );
 

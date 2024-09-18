@@ -19,9 +19,9 @@
                       <li><span>số điện thoại :</span> {{$address->phone}}</li>
                       <li><span>email :</span> {{$address->email}}</li>
                       <li><span>quốc gia :</span> {{$address->country}}</li>
-                      <li><span>trạng thái :</span> {{$address->state}}</li>
+                      {{-- <li><span>trạng thái :</span> {{$address->state}}</li> --}}
                       <li><span>thành phố :</span> {{$address->city}}</li>
-                      <li><span>mã zip :</span> {{$address->zip}}</li>
+                      {{-- <li><span>mã zip :</span> {{$address->zip}}</li> --}}
                       <li><span>địa chỉ :</span> {{$address->address}}</li>
                     </ul>
                     <div class="wsus__address_btn">

@@ -46,12 +46,12 @@
                     </div>
                   </div>
 
-                  <div class="col-xl-6 col-md-6">
+                  {{-- <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
-                      <label>trạng thái <b>*</b></label>
+                      <label>tỉnh/thành phố <b>*</b></label>
                       <input type="text" placeholder="State" name="state" value="{{$address->state}}">
                     </div>
-                  </div>
+                  </div> --}}
 
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
@@ -61,12 +61,12 @@
                   </div>
 
 
-                  <div class="col-xl-6 col-md-6">
+                  {{-- <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
                       <label>mã zip<b>*</b></label>
                       <input type="text" placeholder="Zip Code" name="zip" value="{{$address->zip}}">
                     </div>
-                  </div>
+                  </div> --}}
 
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">

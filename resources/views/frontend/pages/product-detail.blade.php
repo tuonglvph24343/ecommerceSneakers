@@ -221,20 +221,20 @@
                                                 <div class="wsus__pro_det_vendor_text">
                                                     <h4>{{ $product->vendor->user->name }}</h4>
                                                     <p class="rating">
-                                                        {{-- @php
+                                                        @php
                                                             $avgRating = $product->reviews()->avg('rating');
                                                             $fullRating = round($avgRating);
-                                                        @endphp --}}
+                                                        @endphp
 
-                                                        {{-- @for ($i = 1; $i <= 5; $i++)
+                                                        @for ($i = 1; $i <= 5; $i++)
                                                             @if ($i <= $fullRating)
                                                                 <i class="fas fa-star"></i>
                                                             @else
                                                                 <i class="far fa-star"></i>
                                                             @endif
-                                                        @endfor --}}
+                                                        @endfor
 
-                                                        {{-- <span>({{ count($product->reviews) }} review)</span> --}}
+                                                        <span>({{ count($product->reviews) }} review)</span>
                                                     </p>
                                                     <p><span>Tên cửa hàng:</span> {{ $product->vendor->shop_name }}</p>
                                                     <p><span>Địa chỉ:</span> {{ $product->vendor->address }}</p>

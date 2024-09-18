@@ -168,7 +168,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         if(OrderProduct::where('product_id',$product->id)->count() > 0){
-            return response(['status' => 'error', 'message' => 'This product have orders can\'t delete it.']);
+            return response(['status' => 'error', 'message' => 'Sản phẩm này đã đặt hàng không thể xóa được.']);
         }
 
         /** Delte the main product image */

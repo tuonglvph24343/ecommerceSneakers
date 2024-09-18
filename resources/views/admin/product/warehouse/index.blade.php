@@ -15,7 +15,7 @@
                   <div class="card-header">
                     <h4>Kho hàng</h4>
                     <div class="card-header-action">
-                        <a href="{{route('admin.products.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo mới</a>
+                        {{-- <a href="{{route('admin.products.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Tạo mới</a> --}}
                     </div>
                   </div>
                   <div class="card-body">

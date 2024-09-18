@@ -17,6 +17,7 @@ use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Frontend\NotificationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -77,6 +78,9 @@ Route::get('terms-and-conditions', [PageController::class, 'termsAndCondition'])
 /** contact route */
 Route::get('contact', [PageController::class, 'contact'])->name('contact');
 Route::post('contact', [PageController::class, 'handleContactForm'])->name('handle-contact-form');
+/** vorcher route */
+
+Route::get('voucher', [PageController::class, 'voucher'])->name('voucher');
 
 /** Product track route */
 Route::get('product-traking', [ProductTrackController::class, 'index'])->name('product-traking.index');
@@ -101,6 +105,9 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     /** Order Routes */
     Route::get('orders', [UserOrderController::class, 'index'])->name('orders.index');
     Route::get('orders/show/{id}', [UserOrderController::class, 'show'])->name('orders.show');
+    // web.php hoặc api.php
+    Route::post('/cancel-order', [UserOrderController::class, 'cancelOrder'])->name('order.cancel');
+
 
     /** Wishlist routes */
     Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
@@ -126,13 +133,18 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
     Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
 
-    /** Vnpay routes */
-    Route::post('vnpay/payment', [PaymentController::class, 'payWithVnPay'])->name('vnpay.payment');
 
-    
+
+
     /** Razorpay routes */
     Route::post('razorpay/payment', [PaymentController::class, 'payWithRazorPay'])->name('razorpay.payment');
     Route::get('cod/payment', [PaymentController::class, 'payWithCod'])->name('cod.payment');
-
-
+    /** VNPay routes */
+    Route::get('vnpay/payment', [PaymentController::class, 'vnpayPayment'])->name('vnpay.payment');
+    Route::get('vnpay/return', [PaymentController::class, 'vnpayReturn'])->name('vnpay.return');
+/** Notification */
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/clear', [NotificationController::class, 'clearNotifications'])->name('notifications.clear');
+    Route::post('/notifications/clear', [NotificationController::class, 'clearNotifications'])->name('notifications.clear');
+    Route::delete('/notifications/{id}/delete', [NotificationController::class, 'deleteNotification'])->name('notifications.delete');
 });
